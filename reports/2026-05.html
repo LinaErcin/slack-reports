@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Reply.io · Feature Requests &amp; Feedback · May 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#F1F5F9;color:#1E293B;line-height:1.5}
+a{color:inherit;text-decoration:none}
+
+.header{background:linear-gradient(135deg,#0F0A2E 0%,#1E1B4B 40%,#3730A3 100%);padding:40px 48px 32px;color:#fff}
+.header h1{font-size:26px;font-weight:700;letter-spacing:-.5px}
+.header p{margin-top:6px;color:#A5B4FC;font-size:13px}
+
+.stats{display:flex;gap:14px;padding:22px 48px;background:#fff;border-bottom:1px solid #E2E8F0;flex-wrap:wrap}
+.sc{background:#F8FAFC;border:1px solid #E2E8F0;border-radius:10px;padding:14px 18px;min-width:150px;flex:1}
+.sc .lbl{font-size:10px;text-transform:uppercase;letter-spacing:.7px;color:#64748B;font-weight:700}
+.sc .val{font-size:22px;font-weight:800;color:#1E293B;margin-top:3px}
+.sc .sub{font-size:11px;color:#94A3B8;margin-top:2px}
+
+.trending{padding:24px 48px 20px;background:#fff;border-bottom:1px solid #E2E8F0}
+.trending h2{font-size:11px;font-weight:700;color:#64748B;text-transform:uppercase;letter-spacing:.7px;margin-bottom:18px}
+.chart{display:flex;gap:24px;align-items:flex-end;height:150px}
+.bg{display:flex;flex-direction:column;align-items:center;gap:5px}
+.bars{display:flex;gap:4px;align-items:flex-end}
+.bar{width:20px;border-radius:3px 3px 0 0;transition:opacity .2s}
+.bar:hover{opacity:.75}
+.bar.fr{background:#6366F1}
+.bar.fb{background:#F59E0B}
+.bl{font-size:11px;color:#94A3B8;text-align:center;white-space:nowrap}
+.bt{font-size:12px;font-weight:700;color:#475569}
+.legend{display:flex;gap:16px;margin-top:14px;align-items:center}
+.li{display:flex;align-items:center;gap:5px;font-size:12px;color:#64748B}
+.ld{width:10px;height:10px;border-radius:2px}
+
+.content{padding:32px 48px;max-width:1300px}
+.category{margin-bottom:44px}
+.cat-hd{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid #F1F5F9}
+.cat-dot{width:13px;height:13px;border-radius:50%;flex-shrink:0}
+.cat-name{font-size:17px;font-weight:700;color:#1E293B}
+.cat-cnt{background:#F1F5F9;color:#64748B;font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px}
+.cat-mrr{font-size:12px;color:#94A3B8;margin-left:auto;font-weight:600}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(460px,1fr));gap:14px}
+
+.card{background:#fff;border-radius:12px;border:1px solid #E2E8F0;border-left-width:4px;padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+.ct{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.tag{font-size:10px;font-weight:800;padding:2px 6px;border-radius:4px;letter-spacing:.5px;flex-shrink:0}
+.tag.fr{background:#EEF2FF;color:#4338CA;border:1px solid #C7D2FE}
+.tag.fb{background:#FFFBEB;color:#92400E;border:1px solid #FDE68A}
+.st{font-size:11px;font-weight:700;padding:2px 8px;border-radius:10px;flex-shrink:0}
+.st.shipped{background:#ECFDF5;color:#065F46;border:1px solid #6EE7B7}
+.st.partial{background:#FFFBEB;color:#92400E;border:1px solid #FDE68A}
+.st.open{background:#F8FAFC;color:#94A3B8;border:1px solid #E2E8F0}
+.mrr{margin-left:auto;font-size:11px;font-weight:700;color:#059669;background:#ECFDF5;padding:2px 7px;border-radius:6px;white-space:nowrap}
+.mrr.trial{color:#64748B;background:#F1F5F9}
+.mrr.none{color:#94A3B8;background:#F8FAFC}
+.dt{font-size:11px;color:#CBD5E1;flex-shrink:0}
+.sl a{font-size:11px;color:#6366F1;display:flex;align-items:center;gap:3px;white-space:nowrap}
+.sl a:hover{text-decoration:underline}
+
+.ctitle{font-size:14px;font-weight:700;color:#1E293B;line-height:1.3}
+.ccust{font-size:11px;color:#94A3B8;font-style:italic}
+.cdesc{font-size:12.5px;color:#475569;line-height:1.6}
+
+.tgl{background:none;border:1px solid #E2E8F0;border-radius:6px;padding:4px 10px;font-size:11px;color:#6366F1;cursor:pointer;display:flex;align-items:center;gap:4px;width:fit-content}
+.tgl:hover{background:#EEF2FF;border-color:#C7D2FE}
+.tc{display:none;background:#F8FAFC;border-radius:8px;padding:10px 12px;margin-top:2px;border:1px solid #E2E8F0}
+.tc.open{display:block}
+.tr{padding:5px 0;border-bottom:1px solid #EEF2FF;font-size:12px;color:#475569}
+.tr:last-child{border:none}
+.tr strong{color:#334155;font-weight:600}
+
+.cf{display:flex;align-items:center;gap:8px;margin-top:4px;padding-top:10px;border-top:1px solid #F1F5F9}
+.jb{background:#fff;border:1px solid #0052CC;color:#0052CC;border-radius:6px;padding:4px 11px;font-size:11px;font-weight:700;cursor:pointer;margin-left:auto;display:flex;align-items:center;gap:4px;letter-spacing:.2px}
+.jb:hover{background:#0052CC;color:#fff}
+
+.overlay{display:none;position:fixed;inset:0;background:rgba(15,10,46,.6);z-index:1000;align-items:center;justify-content:center}
+.overlay.open{display:flex}
+.modal{background:#fff;border-radius:14px;width:520px;max-width:92vw;padding:24px;box-shadow:0 24px 64px rgba(0,0,0,.25)}
+.mhd{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.mhd h3{font-size:15px;font-weight:700;color:#1E293B}
+.mcl{background:none;border:none;font-size:22px;color:#94A3B8;cursor:pointer;line-height:1;padding:0 2px}
+.mcl:hover{color:#1E293B}
+.modal label{display:block;font-size:10px;font-weight:700;color:#64748B;margin-bottom:4px;text-transform:uppercase;letter-spacing:.6px}
+.modal input,.modal textarea{width:100%;border:1px solid #E2E8F0;border-radius:6px;padding:8px 10px;font-size:13px;font-family:inherit;color:#1E293B;margin-bottom:12px;resize:none}
+.modal input:focus,.modal textarea:focus{outline:none;border-color:#6366F1;box-shadow:0 0 0 3px rgba(99,102,241,.1)}
+.modal textarea{height:90px}
+.mac{display:flex;gap:8px;margin-top:4px}
+.mac button{padding:8px 14px;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer}
+.bcopy{background:#F1F5F9;border:1px solid #E2E8F0;color:#475569}
+.bcopy:hover{background:#E2E8F0}
+.bopen{background:#0052CC;border:none;color:#fff;margin-left:auto;display:flex;align-items:center;gap:5px}
+.bopen:hover{background:#0747A6}
+
+/* ── Jira enhanced ── */
+.spinner{width:28px;height:28px;border:3px solid #E2E8F0;border-top-color:#6366F1;border-radius:50%;animation:spin .7s linear infinite;margin:0 auto}
+@keyframes spin{to{transform:rotate(360deg)}}
+.cog-btn{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#C7D2FE;border-radius:6px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer;margin-top:14px;display:inline-flex;align-items:center;gap:5px}
+.cog-btn:hover{background:rgba(255,255,255,.22);color:#fff}
+.dupe-row{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #FDE68A;font-size:12px}
+.dupe-row:last-child{border:none}
+.dupe-key{color:#0052CC;font-weight:700;min-width:80px;flex-shrink:0}
+.dupe-title{color:#475569;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dupe-status{font-size:10px;background:#F1F5F9;padding:1px 7px;border-radius:8px;color:#64748B;flex-shrink:0}
+.jform-row{display:flex;gap:10px}
+.jform-row > div{flex:1}
+.modal select{width:100%;border:1px solid #E2E8F0;border-radius:6px;padding:8px 10px;font-size:13px;font-family:inherit;margin-bottom:12px;color:#1E293B;background:#fff}
+.modal select:focus{outline:none;border-color:#6366F1;box-shadow:0 0 0 3px rgba(99,102,241,.1)}
+#jira-overlay{cursor:default}
+.modal{cursor:default}
+
+/* ── Month navigation ── */
+
+/* ── View toggle ── */
+.view-toggle{display:flex;align-items:center;gap:8px;background:#fff;border-bottom:1px solid #E2E8F0;padding:10px 48px}
+.vtbtn{border:1px solid #E2E8F0;border-radius:20px;padding:5px 16px;font-size:12px;font-weight:700;cursor:pointer;background:#F8FAFC;color:#64748B;transition:all .15s}
+.vtbtn.active{background:#6366F1;color:#fff;border-color:#6366F1}
+.vtbtn:not(.active):hover{background:#F1F5F9;border-color:#CBD5E1}
+.vtlabel{font-size:11px;color:#CBD5E1;margin-left:6px}
+
+/* ── 3-month stats bar ── */
+.stats3{display:flex;gap:0;padding:14px 48px;background:#F8FAFC;border-bottom:1px solid #E2E8F0;flex-wrap:wrap;align-items:center}
+.s3block{display:flex;flex-direction:column;padding:0 20px}
+.s3block:first-child{padding-left:0}
+.s3label{font-size:10px;text-transform:uppercase;letter-spacing:.6px;color:#94A3B8;font-weight:700}
+.s3val{font-size:20px;font-weight:800;color:#1E293B;margin-top:2px}
+.s3sep{width:1px;background:#E2E8F0;height:34px;align-self:center}
+
+/* ── Month badge ── */
+.mbadge{font-size:10px;font-weight:800;padding:2px 6px;border-radius:4px;letter-spacing:.5px;flex-shrink:0}
+.mbadge.mar{background:#DBEAFE;color:#1E40AF}
+.mbadge.apr{background:#D1FAE5;color:#065F46}
+.mbadge.may{background:#EEF2FF;color:#4338CA}
+
+/* ── Recurring badge ── */
+.rbadge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;background:#FEF3C7;color:#92400E;border:1px solid #FDE68A;flex-shrink:0;white-space:nowrap}
+
+/* ── 3-month category cumulative MRR ── */
+.cat-mrr-3mo{font-size:11px;font-weight:700;color:#6366F1;margin-left:auto;background:#EEF2FF;padding:2px 8px;border-radius:6px}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Feature Requests &amp; Feedback &nbsp;·&nbsp; May 2026</h1>
+  <p>#features-requests &nbsp;+&nbsp; #feedback &nbsp;·&nbsp; Generated May 20, 2026 &nbsp;·&nbsp; Statuses cross-checked against #updates</p>
+  <button class="cog-btn" onclick="openCreds()">⚙️ Jira credentials</button>
+</div>
+
+<div class="view-toggle">
+  <button class="vtbtn active" id="btn-may" onclick="setView('may')">This Month</button>
+  <button class="vtbtn" id="btn-3mo" onclick="setView('3mo')">Last 3 Months</button>
+  <span class="vtlabel">Mar · Apr · May 2026</span>
+</div>
+<div class="stats3" id="stats3" style="display:none"></div>
+
+<div class="stats" id="stats-bar">
+  <div class="sc">
+    <div class="lbl">Total Items</div>
+    <div class="val">26</div>
+    <div class="sub">17 FR · 9 FB</div>
+  </div>
+  <div class="sc">
+    <div class="lbl">Identified MRR</div>
+    <div class="val">~$24K+</div>
+    <div class="sub">from named accounts</div>
+  </div>
+  <div class="sc">
+    <div class="lbl">Shipped</div>
+    <div class="val" style="color:#059669">1</div>
+    <div class="sub">✅ fully resolved</div>
+  </div>
+  <div class="sc">
+    <div class="lbl">Partial</div>
+    <div class="val" style="color:#D97706">5</div>
+    <div class="sub">⚡ partly addressed</div>
+  </div>
+  <div class="sc">
+    <div class="lbl">Open</div>
+    <div class="val" style="color:#94A3B8">20</div>
+    <div class="sub">○ not yet shipped</div>
+  </div>
+  <div class="sc">
+    <div class="lbl">Categories</div>
+    <div class="val">10</div>
+    <div class="sub">product areas</div>
+  </div>
+</div>
+
+<div class="trending">
+  <h2>6-Month Volume Trend</h2>
+  <div class="chart">
+    <div class="bg"><div class="bt">42</div><div class="bars"><div class="bar fr" style="height:78px" title="FR: 27"></div><div class="bar fb" style="height:43px" title="FB: 15"></div></div><div class="bl">Dec '25</div></div>
+    <div class="bg"><div class="bt">33</div><div class="bars"><div class="bar fr" style="height:52px" title="FR: 18"></div><div class="bar fb" style="height:43px" title="FB: 15"></div></div><div class="bl">Jan '26</div></div>
+    <div class="bg"><div class="bt">32</div><div class="bars"><div class="bar fr" style="height:52px" title="FR: 18"></div><div class="bar fb" style="height:40px" title="FB: 14"></div></div><div class="bl">Feb '26</div></div>
+    <div class="bg"><div class="bt">36</div><div class="bars"><div class="bar fr" style="height:75px" title="FR: 26"></div><div class="bar fb" style="height:29px" title="FB: 10"></div></div><div class="bl">Mar '26</div></div>
+    <div class="bg"><div class="bt">45</div><div class="bars"><div class="bar fr" style="height:72px" title="FR: 25"></div><div class="bar fb" style="height:58px" title="FB: 20"></div></div><div class="bl">Apr '26</div></div>
+    <div class="bg"><div class="bt">26*</div><div class="bars"><div class="bar fr" style="height:46px" title="FR: 16"></div><div class="bar fb" style="height:29px" title="FB: 10"></div></div><div class="bl">May '26</div></div>
+  </div>
+  <div class="legend">
+    <div class="li"><div class="ld" style="background:#6366F1"></div> #features-requests</div>
+    <div class="li"><div class="ld" style="background:#F59E0B"></div> #feedback</div>
+    <div class="li" style="font-size:11px;color:#CBD5E1">* partial month through May 18</div>
+  </div>
+</div>
+
+<div id="view-may">
+<div class="content">
+
+<!-- ══ CATEGORY 1: LinkedIn Automation ══ -->
+<div class="category">
+  <div class="cat-hd">
+    <div class="cat-dot" style="background:#0A66C2"></div>
+    <div class="cat-name">LinkedIn Automation</div>
+    <div class="cat-cnt">6 items</div>
+    <div class="cat-mrr">~$19,508 MRR</div>
+  </div>
+  <div class="cards">
+
+    <div class="card" style="border-left-color:#0A66C2">
+      <div class="ct">
+        <span class="tag fr">FR</span>
+        <span class="st open">○ Open</span>
+        <span class="mrr">$1,289</span>
+        <span class="dt">May 15</span>
+        <span class="sl"><a href="https://replyteam.slack.com/archives/C0JAQM4P9/p1778800863672289" target="_blank">🔗 Slack</a></span>
+      </div>
+      <div class="ctitle">LinkedIn connection request monitoring across accounts</div>
+      <div class="ccust">sales@p-product.com · reported by Olena Kovalchuk</div>
+      <div class="cdesc">User manages multiple campaigns with rotating LinkedIn accounts and needs a centralized view of pending/queued connection requests per account to balance load. Current filter-based workaround doesn't scale.</div>
+      <div class="cf">
+        <button class="jb" onclick="openJira(this)"
+          data-summary="LinkedIn: centralized connection request monitoring across accounts"
+          data-description="User manages multiple campaigns with rotating LinkedIn accounts and needs a centralized way to monitor pending/queued connection requests per LinkedIn account to balance account load. Current workaround via filters is too manual and hard to scale. Customer: sales@p-product.com, MRR $1289.">
+          + Jira
+        </button>
+      </div>
+    </div>
+
+    <div class="card" style="border-left-color:#0A66C2">
+      <div class="ct">
+        <span class="tag fr">FR</span>
+        <span class="st partial">⚡ Partial</span>
+        <span class="mrr">$500</span>
+        <span class="dt">May 6</span>
+        <span class="sl"><a href="https://replyteam.slack.com/archives/C0JAQM4P9/p1778018956537879" target="_blank">🔗 Slack</a></span>
+      </div>
+      <div class="ctitle">InMail step fallback logic + proactive notifications</div>
+      <div class="ccust">german@therevenuelabs.com · reported by Olena Kovalchuk</div>
+      <div class="cdesc">Contacts get stuck when no InMail credits — no skip, no notification. Two gaps: (1) no proactive alert when InMail steps can't execute, (2) no fallback/auto-skip logic. Confirmed by multiple users.<br><br><em style="font-size:11px;color:#10B981">⚡ InMail credits-used-up notification shipped Apr 14. LinkedIn account alerts webhook (SN disconnected / no credits / weekly limit) shipped May 14. Auto-skip fallback still open.</em></div>
+      <div class="cf">
+        <button class="jb" onclick="openJira(this)"
+          data-summary="LinkedIn: auto-skip fallback when InMail step is blocked by no credits"
+          data-description="Contacts get stuck in InMail steps when credits are exhausted. System does not skip the step or move contacts forward. Need: (1) fallback/auto-skip logic when InMail step is blocked, (2) proactive notification (partial: notification shipped Apr 14). Customer: german@therevenuelabs.com, MRR $500.">
+          + Jira
+        </button>
+      </div>
+    </div>
+
+    <div class="card" style="border-left-color:#0A66C2">
+      <div class="ct">
+        <span class="tag fr">FR</span>
+        <span class="st open">○ Open</span>
+        <span class="mrr">$630 (Agency)</span>
+        <span class="dt">May 4</span>
+        <span class="sl"><a href="https://replyteam.slack.com/archives/C0JAQM4P9/p1777895196675479" target="_blank">🔗 Slack</a></span>
+      </div>
+      <div class="ctitle">Contact distribution methods across LinkedIn sender profiles</div>
+      <div class="ccust">SalesAR (Agency) · reported by Max · migrating from Grinfi.io</div>
+      <div class="cdesc">Allow configurable distribution of contacts across LinkedIn profiles in a sequence: rotate to new sender, prioritize profiles with prior engagement, fair balance rotation, or random rotation. Also: re-assign contacts with no sending capacity to profiles that still have capacity.</div>
+      <div class="cf">
+        <button class="jb" onclick="openJira(this)"
+          data-summary="LinkedIn: configurable contact distribution methods across sender profiles"
+          data-description="Allow different contact distribution methods across LinkedIn profiles in a sequence: rotate to new sender, prioritize profiles with prior engagement, fair balance rotation, random rotation. Also support re-assigning contacts without sending capacity to profiles that still have it. Customer: SalesAR Agency, MRR $630, migrating from Grinfi.io.">
+          + Jira
+        </button>
+      </div>
+    </div>
+
+    <div class="card" style="border-left-color:#0A66C2">
+      <div class="ct">
+        <span class="tag fr">FR</span>
+        <span class="st shipped">✅ Shipped</span>
+        <span class="mrr">$89</span>
+        <span class="dt">May 11</span>
+        <span class="sl"><a href="https://replyteam.slack.com/archives/C0JAQM4P9/p1778506064593079" target="_blank">🔗 Slack</a></span>
+      </div>
+      <div class="ctitle">Clearer LinkedIn account disconnection indicators</div>
+      <div class="ccust">luiza@gradienthealth.io · reported by Artem Savchuk</div>
+      <div class="cdesc">Not obvious when LinkedIn account is disconnected. Requested: show account status (inactive/disconnected or insufficient InMail credits) in sequence settings + in-app notification when account disconnects.<br><br><em style="font-size:11px;color:#10B981">✅ Email notification when SN disconnected shipped May 14. LinkedIn account alerts webhook (SN disconnected / no InMail credits / weekly limit) shipped May 14.</em></div>
+      <div class="cf">
+        <button class="jb" onclick="openJira(this)"
+          data-summary="LinkedIn: show disconnection status in sequence settings (shipped)"
+          data-description="Shipped May 14: email notification when SN disconnected + LinkedIn account alerts webhook. Original request: show LinkedIn account status (inactive/disconnected or insufficient InMail credits) directly in sequence settings. Customer: luiza@gradienthealth.io, MRR $89.">
+          + Jira
+        </button>
+      </div>
+    </div>
+
+    <div class="card" style="border-left-color:#0A66C2">
+      <div class="ct">
+        <span class="tag fb">FB</span>
+        <span class="st partial">⚡ Partial</span>
+        <span class="mrr">$2,500</span>
+        <span class="dt">May 15</span>
+        <span class="sl"><a href="https://replyteam.slack.com/archives/C0Q4H574L/p1778837900407839" target="_blank">🔗 Slack</a></span>
+      </div>
+      <div class="ctitle">Simpler LinkedIn reconnection process</div>
+      <div class="ccust">y.nesterenko@cosupport.ai · reported by Yana Tesliuk</div>
+      <div class="cdesc">User has 10 LinkedIn accounts. Every time Sales Navigator disconnects, colleagues must re-enter credentials manually. Reconnection process is inconvenient at scale.<br><br><em style="font-size:11px;color:#10B981">⚡ Reconnect button added inside LinkedIn profile page (Apr 29). Multi-account credential flow remains unchanged.</em></div>
+      <div class="cf">
+        <button class="jb" onclick="openJira(this)"
+          data-summary="LinkedIn: streamline reconnection flow for teams managing multiple accounts"
+          data-description="User has 10 LinkedIn accounts connected. Every time Sales Navigator disconnects, they need to ask colleagues to re-enter credentials. Reconnect button was added to profile page (Apr 29) but multi-account credential delegation remains unsolved. Customer: y.nesterenko@cosupport.ai, MRR $2500.">
+          + Jira
+        </button>
+      </div>
+    </div>
+
+    <div class="card" style="border-left-color:#0A66C2">
+      <div class="ct">
+        <span class="tag fb">FB</span>
+        <span class="st open">○ Open</span>
+        <span class="mrr">$14,500</span>
+        <span class="dt">May 12</span>
+        <span class="sl"><a href="https://replyteam.slack.com/archives/C0Q4H574L/p1778596983047309" target="_blank">🔗 Slack</a></span>
+      </div>
+      <div class="ctitle">EntourageBD: LinkedIn disconnect tracking + cross-workspace profiles + Monday.com</div>
+      <div class="ccust">jack.banks@entouragebd.com · reported by Max · ~400 LI profiles</div>
+      <div class="cdesc">Three open items from largest Agency client: (1) Regular LI / SN disconnects — want to track patterns and reasons behind them. (2) Connect a LinkedIn profile once to Agency account and share it across multiple workspaces without reconnecting each time. (3) Planning Monday.com integration in June — no native integration exists.</div>
+      <div class="cf">
+        <button class="jb" onclick="openJira(this)"
+          data-summary="LinkedIn: cross-workspace profile sharing + disconnect pattern tracking (EntourageBD)"
+          data-description="Largest agency client ($14,500 MRR, ~400 LI profiles). Three items: (1) Track patterns/reasons behind LI/SN disconnects. (2) Connect LinkedIn profile once to Agency account and share across multiple workspaces without reconnecting. (3) Monday.com native integration (planning June). Customer: jack.banks@entouragebd.com.">
+          + Jira
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ CATEGORY 2: CRM Integration ══ -->
+<div class="category">
+  <div class="cat-hd">
+    <div class="cat-dot" style="background:#EA580C"></div>
+    <div class="cat-name">CRM Integration</div>
+    <div class="cat-cnt">4 items</div>
+    <div class="cat-mrr">~$1,385 MRR</div>
+  </div>
+  <div class="cards">
+
+    <div class="card" style="border-left-color:#EA580C">
+      <div class="ct">
+        <span class="tag fr">FR</span>
+        <span class="st open">○ Open</span>
+        <span class="mrr">$229</span>
+        <span class="dt">May 18</span>
+        <span class="sl"><a href="https://replyteam.slack.com/archives/C0JAQM4P9/p1779129386413549" target="_blank">🔗 Slack</a></span>
+      </div>
+      <div class="ctitle">Hybrid Salesforce sync matching by Email AND Lead/Contact ID</div>
+      <div class="ccust">loriol@toogoodtogo.com · reported by Artem Savchuk</div>
+      <div class="cdesc">Support matching by both email address AND Lead/Contact ID simultaneously so each Reply contact reliably links to the correct Salesforce record even when duplicate emails exist.</div>
+      <div class="cf">
+        <button class="jb" onclick="openJira(this)"
+          data-summary="Salesforce: hybrid sync matching by Email AND Lead/Contact ID"
+          data-description="Support matching by both email address AND Lead/Contact ID simultaneously so each Reply contact reliably links to the correct Salesforce record even when duplicate emails exist. Customer: loriol@toogoodtogo.com, MRR $229.">
+          + Jira
+        </button>
+      </div>
+    </div>
+
+    <div class="card" style="border-left-color:#EA580C">
+      <div class="ct">
+        <span class="tag fr">FR</span>
+        <span class="st open">○ Open</span>
+        <span class="mrr">$179</span>
+        <span class="dt">May 18</span>
+        <span class="sl"><a href="https://replyteam.slack.com/archives/C0JAQM4P9/p1779113910933169" target="_blank">🔗 Slack</a></span>
+      </div>
+      <div class="ctitle">HubSpot dropdown — sync from Label instead of Internal Name</div>
+      <div class="ccust">fkabir@ascend-co.com · reported by Tetiana Lobko</div>
+      <div class="cdesc">When syncing dropdown field values from HubSpot, Reply maps from the Internal Name field. User wants to sync from the Label field so human-readable display names appear in Reply instead of machine identifiers.</div>
+      <div class="cf">
+        <button class="jb" onclick="openJira(this)"
+          data-summary="HubSpot: sync dropdown values from Label field instead of Internal Name"
+          data-description="When syncing dropdown field values from HubSpot, Reply currently maps from Internal Name. User wants to sync from the Label field so human-readable display names appear in Reply. Customer: fkabir@ascend-co.com, MRR $179.">
+          + Jira
+        </button>
+      </div>
+    </div>
+
+    <div class="card" style="border-left-color:#EA580C">
+      <div class="ct">
+        <span class="tag fb">FB</span>
+        <span class="st open">○ Open</span>
+        <span class="mrr">$229</span>
+        <span class="dt">May 6</span>
+        <span class="sl"><a href="https://replyteam.slack.com/archives/C0Q4H574L/p1778074981564959" target="_blank">🔗 Slack</a></span>
+      </div>
+      <div class="ctitle">Salesforce integration sync error email notifications</div>
+      <div class="ccust">kfabricius@toogoodtogo.com · reported by Tetiana Lobko</div>
+      <div class="cdesc">User wants email notifications when an error occurs during Salesforce integration sync, so they can take action without having to manually check the integration status.</div>
+      <div class="cf">
+        <button class="jb" onclick="openJira(this)"
+          data-summary="Salesforce: email notification when integration sync error occurs"
+          data-description="User wants email notifications when an error occurs in Salesforce integration sync so they can take action without manually checking. Customer: kfabricius@toogoodtogo.com, MRR $229.">
+          + Jira
+        </button>
+      </div>
+    </div>
+
+    <div class="card" style="border-left-color:#EA580C">
+      <div class="ct">
+        <span class="tag fb">FB</span>
+        <span class="st open">○ Open</span>
+        <span class="mrr">$748</span>
+        <span class="dt">May 15</span>
+        <span class="sl"><a href="https://replyteam.slack.com/archives/C0Q4H574L/p1778839406879669" target="_blank">🔗 Slack</a></span>
+      </div>
+      <div class="ctitle">HubSpot + multi-channel setup documentation + integration specialist</div>
+      <div class="ccust">symbioticsec.ai · reported by Hanna Kir · 5k+ emails/week, 60+ mailboxes</div>
+      <div class="cdesc">Customer running multi-channel outbound at scale asked for reference architecture. Two asks: (1) Create a doc with common pitfalls and decision points for HubSpot + multi-channel at scale. (2) Dedicated technical/integrations specialist for bigger accounts to reduce reactive friction.</div>
+      <div class="cf">
+        <button class="jb" onclick="openJira(this)"
+          data-summary="Create reference architecture doc: HubSpot + multi-channel at scale"
+          data-description="Annual client running 5k+ emails/week, 20+ domains, 60+ mailboxes asks for reference architecture doc. Two items: (1) Doc with common pitfalls and decision points for HubSpot + multi-channel setups at scale. (2) Dedicated technical/integrations specialist for larger accounts. Customer: symbioticsec.ai, MRR $748.">
+          + Jira
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ CATEGORY 3: AI Features ══ -->
+<div class="category">
+  <div class="cat-hd">
+    <div class="cat-dot" style="background:#8B5CF6"></div>
+    <div class="cat-name">AI Features</div>
+    <div class="cat-cnt">3 items</div>
+    <div class="cat-mrr">~$1,030+ MRR</div>
+  </div>
+  <div class="cards">
+
+    <div class="card" style="border-left-color:#8B5CF6">
+      <div class="ct">
+        <span class="tag fr">FR</span>
+        <span class="st open">○ Open</span>
+        <span class="mrr">$530</span>
+        <span class="dt">May 14</span>
+        <span class="sl"><a href="https://replyteam.slack.com/archives/C0JAQM4P9/p1778708773268219" target="_blank">🔗 Slack</a></span>
+      </div>
+      <div class="ctitle">Custom AI model via API key for copywriting</div>
+      <div class="ccust">smm@mirigos.com · reported by Olena Kovalchuk</div>
+      <div class="cdesc">User wants to connect their own AI model via API key to use for copywriting within Reply, instead of being limited to the built-in AI models.</div>
+      <div class="cf">
+        <button class="jb" onclick="openJira(this)"
+          data-summary="AI: allow users to connect their own AI model via API key for copywriting"
+          data-description="User wants to connect their own AI model via API key for copywriting within Reply instead of using the built-in AI. Customer: smm@mirigos.com, MRR $530.">
+          + Jira
+        </button>
+      </div>
+    </div>
+
+    <div class="card" style="border-left-color:#8B5CF6">
+      <div class="ct">
+        <span class="tag fr">FR</span>
+        <span class="st open">○ Open</span>
+        <span class="mrr">$500</span>
+        <span class="dt">May 13</span>
+        <span class="sl"><a href="https://replyteam.slack.com/archives/C0JAQM4P9/p1778677666767659" target="_blank">🔗 Slack</a></span>
+      </div>
+      <div class="ctitle">Lithuanian language support for AI voice messages</div>
+      <div class="ccust">kamile@s-e.lt · reported by Helen Burko</div>
+      <div class="cdesc">Customer wants Lithuanian as a supported language for AI voice messages. Currently unavailable. Team confirmed it cannot be added immediately but will explore extending the supported language list.</div>
+      <button class="tgl" onclick="toggleThread(this)">▶ 4 thread replies</button>
+      <div class="tc">
+        <div class="tr"><strong>Lesya Magas</strong> — @Inna Perlovska can we?</div>
+        <div class="tr"><strong>Inna Perlovska</strong> — I'll check 🙌</div>
+        <div class="tr"><strong>Inna Perlovska</strong> — right now we cannot add Lithuanian</div>
+        <div class="tr"><strong>Inna Perlovska</strong> — But I will think about possible ways to extend the list of supported languages in the future 🫡</div>
+      </div>
+      <div class="cf">
+        <button class="jb" onclick="openJira(this)"
+          data-summary="AI Voice: add Lithuanian language support"
+          data-description="Customer wants Lithuanian as a supported language for AI voice messages. Currently not available. Team confirmed it cannot be added now but is exploring expanding the supported language list. Customer: kamile@s-e.lt, MRR $500.">
+          + Jira
+        </button>
+      </div>
+    </div>
+
+    <div class="card" style="border-left-color:#8B5CF6">
+      <div class="ct">
+        <span class="tag fb">FB</span>
+        <span class="st open">○ Open</span>
+        <span class="mrr none">—</span>
+        <span class="dt">May 14</span>
+        <span class="sl"><a href="https://replyteam.slack.com/archives/C0Q4H574L/p1778772451007999" target="_blank">🔗 Slack</a></span>
+      </div>
+      <div class="ctitle">Jason AI popup in editor — option to hide or disable</div>
+      <div class="ccust">lina.datsenko@kitrum.com · reported by Valeriia Bulenok</div>
+      <div class="cdesc">Jason AI popup appears every time text is selected, making regular editing distracting. Request: (1) an option to disable the AI popup entirely, or (2) trigger it manually only when needed — while keeping standard formatting toolbar always available.</div>
+      <div class="cf">
+        <button class="jb" onclick="openJira(this)"
+          data-summary="Editor: option to disable or manually trigger Jason AI popup"
+          data-description="Jason AI popup appears every time text is selected in the editor, making regular editing distracting. Request: option to hide the AI popup or trigger it manually only when needed, while keeping standard formatting features available. Customer: lina.datsenko@kitrum.com.">
+          + Jira
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ CATEGORY 4: Analytics & Reporting ══ -->
+<div class="category">
+  <div class="cat-hd">
+    <div class="cat-dot" style="background:#10B981"></div>
+    <div class="cat-name">Analytics &amp; Reporting</div>
+    <div class="cat-cnt">2 items</div>
+    <div class="cat-mrr">~$499+ MRR</div>
+  </div>
+  <div class="cards">
+
+    <div class="card" style="border-left-color:#10B981">
+      <div class="ct">
+        <span class="tag fr">FR</span>
+        <span class="st open">○ Open</span>
+        <span class="mrr">$499</span>
+        <span class="dt">May 18</span>
+        <span class="sl"><a href="https://replyteam.slack.com/archives/C0JAQM4P9/p1779099031667209" target="_blank">🔗 Slack</a></span>
+      </div>
+      <div class="ctitle">Bulk export or API endpoint for mailbox sending stats</div>
+      <div class="ccust">sadler@oneeagleadvisory.com · reported by Tetiana Lobko</div>
+      <div class="cdesc">User wants a daily bulk data export or API endpoint to pull mailbox health/sending stats programmatically. Currently must manually check each email account. Use case: automation to detect errors and verify sending volumes without manual review.</div>
+      <div class="cf">
+        <button class="jb" onclick="openJira(this)"
+          data-summary="API: bulk export or endpoint for mailbox health and sending stats"
+          data-description="User wants daily bulk data export or API endpoint to pull mailbox health/sending stats programmatically. Currently must manually check each account. Customer: sadler@oneeagleadvisory.com, MRR $499.">
+          + Jira
+        </button>
+      </div>
+    </div>
+
+    <div class="card" style="border-left-color:#10B981">
+      <div class="ct">
+        <span class="tag fr">FR</span>
+        <span class="st open">○ Open</span>
+        <span class="mrr none">—</span>
+        <span class="dt">May 4</span>
+        <span class="sl"><a href="https://replyteam.slack.com/archives/C0JAQM4P9/p1777907897395329" target="_blank">🔗 Slack</a></span>
+      </div>
+      <div class="ctitle">Separate columns for Reply Count and Reply Rate in Email Report</div>
+      <div class="ccust">Peoplelinx · reported by Maria Obolashvili</div>
+      <div class="cdesc">Currently Replies and Reply Rate can't be shown as separate columns simultaneously in the Stats section. Request: mirror how Clicks and CTR are displayed as distinct side-by-side columns to make reporting and comparison easier.</div>
+      <div class="cf">
+        <button class="jb" onclick="openJira(this)"
+          data-summary="Email Report: separate columns for Reply Count and Reply Rate"
+          data-description="Currently Replies and Reply Rate cannot be shown as separate columns simultaneously. Request mirrors how Clicks and CTR are displayed as distinct side-by-side columns. Customer: Peoplelinx.">
+          + Jira
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ CATEGORY 5: Sequences & Email ══ -->
+<div class="category">
+  <div class="cat-hd">
+    <div class="cat-dot" style="background:#EC4899"></div>
+    <div class="cat-name">Sequences &amp; Email</div>
+    <div class="cat-cnt">2 items</div>
+    <div class="cat-mrr">~$837 MRR</div>
+  </div>
+  <div class="cards">
+
+    <div class="card" style="border-left-color:#EC4899">
+      <div class="ct">
+        <span class="tag fr">FR</span>
+        <span class="st partial">⚡ Partial</span>
+        <span class="mrr">$337</span>
+        <span class="dt">May 15</span>
+        <span class="sl"><a href="https://replyteam.slack.com/archives/C0JAQM4P9/p1778854646715789" target="_blank">🔗 Slack</a></span>
+      </div>
+      <div class="ctitle">Support variables inside custom fields</div>
+      <div class="ccust">o.nikitin@ability.ai · reported by Iryna</div>
+      <div class="cdesc">User uploads CSV with email templates as custom fields per contact (including First name and Company variables), but the system shows them as Missing data instead of resolving the variables.<br><br><em style="font-size:11px;color:#D97706">⚡ AI Custom Fields shipped May 6 — may cover some cases; exact fit for this CSV-based flow unclear per thread discussion.</em></div>
+      <button class="tgl" onclick="toggleThread(this)">▶ 5 thread replies</button>
+      <div class="tc">
+        <div class="tr"><strong>Lesya Magas</strong> — AI custom fields do that!</div>
+        <div class="tr"><strong>Iryna</strong> — For context: user uploads CSV with email templates as custom fields per contact. Has First name and Company variables but system shows Missing data. Not sure how AI custom field would help — should user change regular fields to AI?</div>
+        <div class="tr"><strong>Lesya Magas</strong> — That's a weird flow, why don't they use email templates?</div>
+        <div class="tr"><strong>Lesya Magas</strong> — Why don't they create a template and select it in the sequence?</div>
+        <div class="tr"><strong>Iryna</strong> — Maybe they have personalized templates for each client, I don't know</div>
+      </div>
+      <div class="cf">
+        <button class="jb" onclick="openJira(this)"
+          data-summary="Sequences: resolve variables inside CSV-imported custom field content"
+          data-description="User uploads CSV with email templates as custom fields per contact including First name and Company variables, but system shows Missing data. AI Custom Fields shipped (May 6) may partially address this but the CSV-template flow remains unclear. Customer: o.nikitin@ability.ai, MRR $337.">
+          + Jira
+        </button>
+      </div>
+    </div>
+
+    <div class="card" style="border-left-color:#EC4899">
+      <div class="ct">
+        <span class="tag fr">FR</span>
+        <span class="st open">○ Open</span>
+        <span class="mrr">$500</span>
+        <span class="dt">May 13</span>
+        <span class="sl"><a href="https://replyteam.slack.com/archives/C0JAQM4P9/p1778685190419619" target="_blank">🔗 Slack</a></span>
+      </div>
+      <div class="ctitle">Save / pre-save default CTA per sequence</div>
+      <div class="ccust">david@coastalwipers.com · reported by Mariia Liaskovets</div>
+      <div class="cdesc">When creating sequences for different audiences, the CTA often stays the same. User wants to pre-save a default CTA per sequence to avoid re-entering it each time. Not marked as urgent.</div>
+      <div class="cf">
+        <button class="jb" onclick="openJira(this)"
+          data-summary="Sequences: save/pre-save default CTA per sequence"
+          data-description="When creating sequences for different audiences, the CTA often stays the same. User wants to pre-save a default CTA per sequence to avoid re-entering it each time. Not urgent. Customer: david@coastalwipers.com, MRR $500.">
+          + Jira
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ CATEGORY 6: Security & Auth ══ -->
+<div class="category">
+  <div class="cat-hd">
+    <div class="cat-dot" style="background:#64748B"></div>
+    <div class="cat-name">Security &amp; Auth</div>
+    <div class="cat-cnt">2 items</div>
+    <div class="cat-mrr">~$864 MRR</div>
+  </div>
+  <div class="cards">
+
+    <div class="card" style="border-left-color:#64748B">
+      <div class="ct">
+        <span class="tag fr">FR</span>
+        <span class="st open">○ Open</span>
+        <span class="mrr">$696 (Agency)</span>
+        <span class="dt">May 13</span>
+        <span class="sl"><a href="https://replyteam.slack.com/archives/C0JAQM4P9/p1778676490171149" target="_blank">🔗 Slack</a></span>
+      </div>
+      <div class="ctitle">Change ownership of connected mailboxes</div>
+      <div class="ccust">admin@salesar.io · reported by Daniil Reznichenko</div>
+      <div class="cdesc">Add the option to transfer ownership of connected mailboxes between users. <span style="color:#6366F1;font-size:11px">📌 Added to product backlog per Lesya.</span></div>
+      <button class="tgl" onclick="toggleThread(this)">▶ 1 thread reply</button>
+      <div class="tc">
+        <div class="tr"><strong>Lesya Magas</strong> — @Inna Perlovska let's take this one in the backlog ✍️</div>
+      </div>
+      <div class="cf">
+        <button class="jb" onclick="openJira(this)"
+          data-summary="Mailboxes: option to change/transfer ownership of connected mailbox"
+          data-description="Add option to change the ownership of connected mailboxes between users. Added to product backlog. Customer: admin@salesar.io, Agency MRR $696.">
+          + Jira
+        </button>
+      </div>
+    </div>
+
+    <div class="card" style="border-left-color:#64748B">
+      <div class="ct">
+        <span class="tag fb">FB</span>
+        <span class="st open">○ Open</span>
+        <span class="mrr">$168</span>
+        <span class="dt">May 6</span>
+        <span class="sl"><a href="https://replyteam.slack.com/archives/C0Q4H574L/p1778079600413799" target="_blank">🔗 Slack</a></span>
+      </div>
+      <div class="ctitle">Entra ID support + SSO enforcement gap</div>
+      <div class="ccust">edena@vintage-ip.com + Vitalii Huba (internal) · reported by Olena Kovalchuk</div>
+      <div class="cdesc">Three related security gaps: (1) Entra ID users cannot log in with Microsoft OpenID. (2) SSO cannot be enforced exclusively — users can still bypass it via password reset. (3) Standalone MFA not supported (only available via Okta/Google/Microsoft OpenID SSO). Customer cited "low security access" as main blocker.
+        <br><br>Internal notes:
+        <a href="https://replyteam.slack.com/archives/C0Q4H574L/p1778091062344019" target="_blank" style="color:#6366F1;font-size:11px">🔗 Entra ID</a> ·
+        <a href="https://replyteam.slack.com/archives/C0Q4H574L/p1778090931608149" target="_blank" style="color:#6366F1;font-size:11px">🔗 SSO gap</a>
+      </div>
+      <div class="cf">
+        <button class="jb" onclick="openJira(this)"
+          data-summary="Auth: Entra ID (Microsoft OpenID) support + exclusive SSO enforcement"
+          data-description="Three gaps: (1) Entra ID users cannot log in with Microsoft OpenID. (2) SSO cannot be enforced exclusively — users can still log in via password reset. (3) Standalone MFA only available via SSO integrations. Customer cites low security access as main blocker. Customer: edena@vintage-ip.com, MRR $168.">
+          + Jira
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ CATEGORY 7: Inbox ══ -->
+<div class="category">
+  <div class="cat-hd">
+    <div class="cat-dot" style="background:#F59E0B"></div>
+    <div class="cat-name">Inbox</div>
+    <div class="cat-cnt">2 items</div>
+    <div class="cat-mrr">~$405+ MRR</div>
+  </div>
+  <div class="cards">
+
+    <div class="card" style="border-left-color:#F59E0B">
+      <div class="ct">
+        <span class="tag fr">FR</span>
+        <span class="st open">○ Open</span>
+        <span class="mrr none">—</span>
+        <span class="dt">May 14</span>
+        <span class="sl"><a href="https://replyteam.slack.com/archives/C0JAQM4P9/p1778708834068829" target="_blank">🔗 Slack</a></span>
+      </div>
+      <div class="ctitle">Edit or delete saved canned responses</div>
+      <div class="ccust">Peoplelinx · reported by Olena Kovalchuk</div>
+      <div class="cdesc">Users cannot modify or remove canned responses once saved. Request: add edit and delete actions to manage the saved canned response library.</div>
+      <div class="cf">
+        <button class="jb" onclick="openJira(this)"
+          data-summary="Inbox: allow editing and deleting saved canned responses"
+          data-description="Users cannot modify or remove canned responses once saved. Request: add edit and delete actions to manage the saved canned response library. Customer: Peoplelinx.">
+          + Jira
+        </button>
+      </div>
+    </div>
+
+    <div class="card" style="border-left-color:#F59E0B">
+      <div class="ct">
+        <span class="tag fb">FB</span>
+        <span class="st open">○ Open</span>
+        <span class="mrr">$405</span>
+        <span class="dt">May 7</span>
+        <span class="sl"><a href="https://replyteam.slack.com/archives/C0Q4H574L/p1778140779699499" target="_blank">🔗 Slack</a></span>
+      </div>
+      <div class="ctitle">Email quality check incorrectly flags spam words from AI variable prompt</div>
+      <div class="ccust">saravana.replyio@learnerspoint.org · reported by Tetiana Lobko</div>
+      <div class="cdesc">Email quality check counts spam words found inside the AI variable prompt, but since it's a prompt (not the actual email content), this is confusing and produces misleading quality scores.</div>
+      <div class="cf">
+        <button class="jb" onclick="openJira(this)"
+          data-summary="Email quality check: exclude AI variable prompt content from spam word count"
+          data-description="Email quality check counts spam words from the AI variable prompt, but since it is a prompt and not actual message content, this is confusing and misleading. Quality check should only scan final email content. Customer: saravana.replyio@learnerspoint.org, MRR $405.">
+          + Jira
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ CATEGORY 8: Contact Management ══ -->
+<div class="category">
+  <div class="cat-hd">
+    <div class="cat-dot" style="background:#06B6D4"></div>
+    <div class="cat-name">Contact Management</div>
+    <div class="cat-cnt">2 items</div>
+    <div class="cat-mrr">Trial accounts</div>
+  </div>
+  <div class="cards">
+
+    <div class="card" style="border-left-color:#06B6D4">
+      <div class="ct">
+        <span class="tag fr">FR</span>
+        <span class="st open">○ Open</span>
+        <span class="mrr trial">Trial</span>
+        <span class="dt">May 5</span>
+        <span class="sl"><a href="https://replyteam.slack.com/archives/C0JAQM4P9/p1778002911734469" target="_blank">🔗 Slack</a></span>
+      </div>
+      <div class="ctitle">CSV partial field update — preserve unmapped fields</div>
+      <div class="ccust">jerry@revenuevelocity.group · reported by Maria Obolashvili</div>
+      <div class="cdesc">When uploading a CSV to update only one field (e.g. phone number): "update" option clears all unmapped fields; "skip" leaves the contact untouched entirely. Need a third option: update only mapped fields while preserving all other existing data. 👍 ×1</div>
+      <div class="cf">
+        <button class="jb" onclick="openJira(this)"
+          data-summary="CSV import: third option to update only mapped fields without clearing others"
+          data-description="When uploading CSV to update a single field, update mode clears unmapped fields and skip mode leaves contact untouched. Need a third option: update only the mapped fields while preserving all other existing contact data. Customer: jerry@revenuevelocity.group, Trial.">
+          + Jira
+        </button>
+      </div>
+    </div>
+
+    <div class="card" style="border-left-color:#06B6D4">
+      <div class="ct">
+        <span class="tag fb">FB</span>
+        <span class="st open">○ Open</span>
+        <span class="mrr none">—</span>
+        <span class="dt">May 15</span>
+        <span class="sl"><a href="https://replyteam.slack.com/archives/C0Q4H574L/p1778871656112509" target="_blank">🔗 Slack</a></span>
+      </div>
+      <div class="ctitle">Custom field "Publish org-wide" option during CSV import</div>
+      <div class="ccust">Max (internal) · follow-up tagged to Angelina</div>
+      <div class="cdesc">When creating a new custom field during CSV import, there is no option to "Publish this contact field organization wide." Also raises question: is there any benefit to using Number vs Text field type for custom fields? (Number field type seems to cause formatting issues with no clear benefit.)</div>
+      <div class="cf">
+        <button class="jb" onclick="openJira(this)"
+          data-summary="CSV import: add publish org-wide option when creating custom fields"
+          data-description="When creating a new custom field during CSV import there is no option to publish it organization-wide. Also: clarify whether Number field type has any benefit over Text for custom fields (Number causes formatting issues). Reporter: Max (internal), follow-up to Angelina.">
+          + Jira
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ CATEGORY 9: Scheduling ══ -->
+<div class="category">
+  <div class="cat-hd">
+    <div class="cat-dot" style="background:#6366F1"></div>
+    <div class="cat-name">Scheduling</div>
+    <div class="cat-cnt">1 item</div>
+    <div class="cat-mrr">$59 MRR</div>
+  </div>
+  <div class="cards">
+
+    <div class="card" style="border-left-color:#6366F1">
+      <div class="ct">
+        <span class="tag fr">FR</span>
+        <span class="st open">○ Open</span>
+        <span class="mrr">$59</span>
+        <span class="dt">May 13</span>
+        <span class="sl"><a href="https://replyteam.slack.com/archives/C0JAQM4P9/p1778700651690489" target="_blank">🔗 Slack</a></span>
+      </div>
+      <div class="ctitle">Copy time blocks from one day to other days in schedules</div>
+      <div class="ccust">jerry@revenuevelocity.group · reported by Maria Obolashvili</div>
+      <div class="cdesc">When configuring sending schedules, users must manually re-enter the same time blocks for each day of the week. Request: add a "copy to other days" or "apply to all" action to replicate time blocks across days.</div>
+      <div class="cf">
+        <button class="jb" onclick="openJira(this)"
+          data-summary="Schedules: copy time blocks from one day to other days"
+          data-description="When configuring sending schedules, users must re-enter the same time blocks for each day manually. Request: add a copy to other days or apply to all action. Customer: jerry@revenuevelocity.group, MRR $59.">
+          + Jira
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ CATEGORY 10: API & Webhooks ══ -->
+<div class="category">
+  <div class="cat-hd">
+    <div class="cat-dot" style="background:#7C3AED"></div>
+    <div class="cat-name">API &amp; Webhooks</div>
+    <div class="cat-cnt">2 items</div>
+    <div class="cat-mrr">~$220+ MRR</div>
+  </div>
+  <div class="cards">
+
+    <div class="card" style="border-left-color:#7C3AED">
+      <div class="ct">
+        <span class="tag fr">FR</span>
+        <span class="st partial">⚡ Partial</span>
+        <span class="mrr none">—</span>
+        <span class="dt">May 12</span>
+        <span class="sl"><a href="https://replyteam.slack.com/archives/C0JAQM4P9/p1778587434817109" target="_blank">🔗 Slack</a></span>
+      </div>
+      <div class="ctitle">Additional fields in all webhook events (sequence_id, sequence_name, email_from)</div>
+      <div class="ccust">Sojern · reported by Iryna</div>
+      <div class="cdesc">Request to include <code style="background:#F1F5F9;padding:1px 4px;border-radius:3px;font-size:11px">sequence_id</code>, <code style="background:#F1F5F9;padding:1px 4px;border-radius:3px;font-size:11px">sequence_name</code>, and <code style="background:#F1F5F9;padding:1px 4px;border-radius:3px;font-size:11px">email_from</code> consistently across all webhook events (email sent, opened, link clicked, etc.) to improve join reliability across datasets.<br><br><em style="font-size:11px;color:#D97706">⚡ v3 Webhooks management page shipped May 18 (Beta). Specific additional fields not yet confirmed.</em></div>
+      <button class="tgl" onclick="toggleThread(this)">▶ 2 thread replies</button>
+      <div class="tc">
+        <div class="tr"><strong>Max</strong> — Hey Iryna, I think it's worth posting any API related requests/questions in our API Community — replyio-api-community.slack.com</div>
+        <div class="tr"><strong>Iryna</strong> — Will do, thanks!</div>
+      </div>
+      <div class="cf">
+        <button class="jb" onclick="openJira(this)"
+          data-summary="Webhooks: add sequence_id, sequence_name, email_from to all webhook events"
+          data-description="Include sequence_id, sequence_name, and email_from fields consistently in all webhook events (email sent, opened, link clicked, etc.) to improve join reliability across datasets. v3 Webhooks management page shipped May 18 (Beta). Customer: Sojern.">
+          + Jira
+        </button>
+      </div>
+    </div>
+
+    <div class="card" style="border-left-color:#7C3AED">
+      <div class="ct">
+        <span class="tag fb">FB</span>
+        <span class="st partial">⚡ Partial</span>
+        <span class="mrr">$220</span>
+        <span class="dt">May 4</span>
+        <span class="sl"><a href="https://replyteam.slack.com/archives/C0Q4H574L/p1777882061501119" target="_blank">🔗 Slack</a></span>
+      </div>
+      <div class="ctitle">Email Procurement billing page UX — 4 clarity issues</div>
+      <div class="ccust">sean@squareone.digital · reported by Max</div>
+      <div class="cdesc">Valid UX feedback on the Email Procurement purchase flow. Four issues: (1) No clear page title/context. (2) Little clarity between existing expense vs. new cost being added. (3) Add-ons (mailboxes) vs. features (domains) are confusing — the $20 reference doesn't explain the math. (4) "Full monthly price $220/month" column is unclear about what it covers.<br><br><em style="font-size:11px;color:#D97706">⚡ Prorated billing highlight shipped Apr 3 — addresses one of the four issues.</em></div>
+      <div class="cf">
+        <button class="jb" onclick="openJira(this)"
+          data-summary="Billing: Email Procurement page UX — 4 clarity issues"
+          data-description="Four UX issues on Email Procurement purchase page: (1) No clear page title. (2) No clarity between existing vs new cost. (3) Add-ons vs features confusing, $20 reference unexplained. (4) Full monthly price column unclear. Prorated billing highlight shipped Apr 3 (1 of 4 addressed). Customer: sean@squareone.digital, MRR $220.">
+          + Jira
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- /content -->
+</div><!-- /view-may -->
+
+<div id="view-3mo" style="display:none">
+  <div class="content" id="content-3mo"></div>
+</div>
+
+<!-- ── Credentials modal ── -->
+<div class="overlay" id="cred-overlay" onclick="closeCreds(event)">
+  <div class="modal" onclick="event.stopPropagation()" style="max-width:440px">
+    <div class="mhd">
+      <h3>⚙️ Jira Credentials</h3>
+      <button class="mcl" onclick="closeCreds()">&times;</button>
+    </div>
+    <label>Atlassian email</label>
+    <input type="email" id="cred-email" placeholder="you@replyio.com">
+    <label>API token &nbsp;<a href="https://id.atlassian.com/manage-profile/security/api-tokens" target="_blank" style="font-size:10px;color:#6366F1;font-weight:400">Get token ↗</a></label>
+    <input type="password" id="cred-token" placeholder="Atlassian API token" autocomplete="current-password">
+    <p style="font-size:11px;color:#94A3B8;margin:-8px 0 14px">Stored in session only — never written to disk.</p>
+    <div class="mac"><button class="bopen" onclick="saveCreds()" style="margin-left:0;width:100%;justify-content:center">Save &amp; continue</button></div>
+  </div>
+</div>
+
+<!-- ── Jira ticket modal ── -->
+<div class="overlay" id="jira-overlay">
+  <div class="modal" onclick="event.stopPropagation()" style="width:600px;max-width:94vw">
+
+    <!-- Loading -->
+    <div id="js-loading" style="text-align:center;padding:32px 0">
+      <div class="spinner"></div>
+      <p id="js-loading-msg" style="margin-top:14px;color:#64748B;font-size:13px">Searching for duplicates…</p>
+    </div>
+
+    <!-- Preview -->
+    <div id="js-preview" style="display:none">
+      <div class="mhd">
+        <h3>🔷 New Jira Ticket — REPLY</h3>
+        <button class="mcl" onclick="closeJira()">&times;</button>
+      </div>
+
+      <div id="js-dupes" style="display:none;background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;padding:12px 14px;margin-bottom:14px">
+        <div style="font-size:11px;font-weight:700;color:#92400E;margin-bottom:8px;text-transform:uppercase;letter-spacing:.4px">⚠️ Possible duplicates in REPLY</div>
+        <div id="js-dupe-list"></div>
+      </div>
+
+      <label>Summary</label>
+      <input type="text" id="js-summary">
+
+      <label>Description</label>
+      <textarea id="js-desc" style="height:150px;font-size:12px;font-family:ui-monospace,monospace;line-height:1.5"></textarea>
+
+      <div class="jform-row">
+        <div>
+          <label>Issue type</label>
+          <select id="js-issuetype">
+            <option>Feature request</option>
+            <option>Customer request</option>
+            <option>Story</option>
+            <option>Task</option>
+            <option>Bug</option>
+          </select>
+        </div>
+        <div>
+          <label>Priority</label>
+          <select id="js-priority">
+            <option>Medium</option>
+            <option>High</option>
+            <option>Low</option>
+            <option>Critical</option>
+          </select>
+        </div>
+        <div>
+          <label>Project</label>
+          <input type="text" id="js-project" value="REPLY" style="font-weight:700;letter-spacing:.5px">
+        </div>
+      </div>
+
+      <label>Labels <span style="font-weight:400;color:#94A3B8">(comma-separated)</span></label>
+      <input type="text" id="js-labels" value="customer-request, product-feedback">
+
+      <div class="mac" style="margin-top:6px">
+        <button class="bcopy" onclick="closeJira()">Cancel</button>
+        <button class="bopen" id="js-create-btn" onclick="createTicket()">Create Ticket →</button>
+      </div>
+    </div>
+
+    <!-- Success -->
+    <div id="js-success" style="display:none;text-align:center;padding:28px 0">
+      <div style="font-size:44px;line-height:1;margin-bottom:12px">✅</div>
+      <div style="font-size:13px;color:#94A3B8;margin-bottom:6px">Ticket created in REPLY</div>
+      <a id="js-ticket-key" href="#" target="_blank" style="font-size:26px;font-weight:800;color:#0052CC;letter-spacing:-1px;display:block"></a>
+      <p id="js-ticket-title" style="font-size:12px;color:#64748B;margin-top:6px;padding:0 24px"></p>
+      <div style="margin-top:22px"><button class="bopen" onclick="closeJira()" style="margin:0 auto">Done</button></div>
+    </div>
+
+    <!-- Error -->
+    <div id="js-error" style="display:none;padding:20px 0">
+      <div class="mhd">
+        <h3 style="color:#DC2626">⚠️ Error</h3>
+        <button class="mcl" onclick="closeJira()">&times;</button>
+      </div>
+      <p id="js-err-msg" style="font-size:13px;color:#475569;line-height:1.6;margin-bottom:16px"></p>
+      <div class="mac">
+        <button class="bcopy" onclick="closeJira()">Cancel</button>
+        <button class="bopen" onclick="retryPreview()">Retry →</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ── State ────────────────────────────────────────────────────────────────
+let pendingBtn = null;
+
+// ── Thread toggle ─────────────────────────────────────────────────────────
+function toggleThread(btn) {
+  const tc = btn.nextElementSibling;
+  const open = tc.classList.toggle('open');
+  btn.textContent = (open ? '▼ ' : '▶ ') + btn.textContent.slice(2);
+}
+
+// ── Credentials ───────────────────────────────────────────────────────────
+function openCreds() {
+  document.getElementById('cred-email').value = sessionStorage.getItem('jiraEmail') || '';
+  document.getElementById('cred-token').value = sessionStorage.getItem('jiraToken') || '';
+  document.getElementById('cred-overlay').classList.add('open');
+}
+function closeCreds(e) {
+  if (!e || e.target === document.getElementById('cred-overlay'))
+    document.getElementById('cred-overlay').classList.remove('open');
+}
+function saveCreds() {
+  const email = document.getElementById('cred-email').value.trim();
+  const token = document.getElementById('cred-token').value.trim();
+  if (!email || !token) { alert('Both fields are required.'); return; }
+  sessionStorage.setItem('jiraEmail', email);
+  sessionStorage.setItem('jiraToken', token);
+  document.getElementById('cred-overlay').classList.remove('open');
+  if (pendingBtn) { const b = pendingBtn; pendingBtn = null; openJira(b); }
+}
+function getAuth() {
+  const e = sessionStorage.getItem('jiraEmail');
+  const t = sessionStorage.getItem('jiraToken');
+  return (e && t) ? 'Basic ' + btoa(e + ':' + t) : null;
+}
+
+// ── Jira REST API (v3, Basic auth) ────────────────────────────────────────
+const JIRA_BASE = 'https://replyio.atlassian.net/rest/api/3';
+
+async function jiraReq(path, method, body) {
+  const auth = getAuth();
+  if (!auth) throw new Error('NO_AUTH');
+  const opts = {
+    method: method || 'GET',
+    headers: { Authorization: auth, Accept: 'application/json', 'Content-Type': 'application/json' }
+  };
+  if (body) opts.body = JSON.stringify(body);
+  let res;
+  try { res = await fetch(JIRA_BASE + path, opts); }
+  catch (e) { throw new Error('CORS_NET:' + e.message); }
+  if (!res.ok) {
+    const j = await res.json().catch(() => ({}));
+    const msg = (j.errorMessages || []).concat(Object.values(j.errors || {})).join(' · ') || 'HTTP ' + res.status;
+    throw new Error(msg);
+  }
+  return res.json();
+}
+
+// ── Duplicate search ──────────────────────────────────────────────────────
+async function searchDupes(summary) {
+  const words = summary.replace(/[^a-zA-Z0-9 ]/g, ' ')
+    .split(/\s+/).filter(w => w.length > 4).slice(0, 5).join(' ');
+  if (!words) return [];
+  const jql = 'project = REPLY AND summary ~ "' + words + '" ORDER BY created DESC';
+  const data = await jiraReq('/search?maxResults=5&fields=summary,status&jql=' + encodeURIComponent(jql));
+  return data.issues || [];
+}
+
+// ── HTML escape helper ────────────────────────────────────────────────────
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// ── Card metadata (DOM for This Month cards; data-attrs for 3-month cards) ──
+function cardMeta(btn) {
+  if (btn.dataset.src === '3mo') {
+    return {
+      customer:  btn.dataset.customer  || '',
+      reporter:  btn.dataset.reporter  || '',
+      mrr:       btn.dataset.mrr       || '—',
+      date:      btn.dataset.date      || '',
+      channel:   btn.dataset.channel   || '',
+      slackUrl:  btn.dataset.slackUrl  || '',
+      issueType: 'Feature request'
+    };
+  }
+  const card = btn.closest('.card');
+  const raw  = card.querySelector('.ccust')?.textContent || '';
+  const parts = raw.split('·');
+  const isFR = card.querySelector('.tag')?.textContent.trim() === 'FR';
+  return {
+    customer:  parts[0]?.trim() || '',
+    reporter:  parts.slice(1).join('·').trim().replace(/^reported by\s*/i, '') || '',
+    mrr:       card.querySelector('.mrr')?.textContent.trim() || '—',
+    date:      card.querySelector('.dt')?.textContent.trim() || '',
+    channel:   isFR ? '#features-requests' : '#feedback',
+    slackUrl:  card.querySelector('.sl a')?.href || '',
+    issueType: isFR ? 'Feature request' : 'Customer request'
+  };
+}
+
+// ── Ticket content builders ───────────────────────────────────────────────
+function buildPlainText(meta, rawDesc) {
+  const lines = [
+    '## Problem Statement',
+    rawDesc,
+    '',
+    '## MRR Impact',
+    meta.mrr + (meta.customer ? ' — ' + meta.customer : ''),
+    '',
+    '## Customer Context',
+    'Reporter:  ' + meta.reporter,
+    'Requested: ' + meta.date + ' via ' + meta.channel,
+  ];
+  if (meta.slackUrl) lines.push('', '## Slack Reference', meta.slackUrl);
+  return lines.join('\n');
+}
+
+// Atlassian Document Format — parses ## headings from textarea content
+function toAdf(textContent) {
+  const nodes = [];
+  let buf = [];
+  const flush = () => {
+    const t = buf.join('\n').trim();
+    if (t) {
+      // Detect bare URL lines and make them links
+      if (/^https?:\/\/\S+$/.test(t)) {
+        nodes.push({ type:'paragraph', content:[
+          {type:'text', text:t, marks:[{type:'link', attrs:{href:t}}]}
+        ]});
+      } else {
+        nodes.push({ type:'paragraph', content:[{type:'text', text:t}] });
+      }
+    }
+    buf = [];
+  };
+  for (const line of textContent.split('\n')) {
+    if (line.startsWith('## ')) {
+      flush();
+      nodes.push({ type:'heading', attrs:{level:3}, content:[{type:'text', text:line.slice(3)}] });
+    } else {
+      buf.push(line);
+    }
+  }
+  flush();
+  return { type:'doc', version:1, content: nodes.length ? nodes : [{type:'paragraph',content:[{type:'text',text:''}]}] };
+}
+
+// ── Modal steps ───────────────────────────────────────────────────────────
+function showStep(name) {
+  ['loading','preview','success','error'].forEach(s =>
+    document.getElementById('js-' + s).style.display = s === name ? '' : 'none'
+  );
+}
+
+// ── Open modal ────────────────────────────────────────────────────────────
+async function openJira(btn) {
+  const auth = getAuth();
+  if (!auth) { pendingBtn = btn; openCreds(); return; }
+
+  pendingBtn = btn;
+  document.getElementById('jira-overlay').classList.add('open');
+  showStep('loading');
+  document.getElementById('js-loading-msg').textContent = 'Searching for duplicates in REPLY…';
+
+  const summary = btn.dataset.summary || '';
+  const rawDesc = btn.dataset.description || '';
+  const meta    = cardMeta(btn);
+
+  try {
+    const dupes = await searchDupes(summary);
+
+    // Populate fields
+    document.getElementById('js-summary').value    = summary;
+    document.getElementById('js-desc').value        = buildPlainText(meta, rawDesc);
+    document.getElementById('js-issuetype').value   = meta.issueType;
+
+    // Duplicates section
+    const dsec  = document.getElementById('js-dupes');
+    const dlist = document.getElementById('js-dupe-list');
+    if (dupes.length) {
+      dlist.innerHTML = dupes.map(i =>
+        '<div class="dupe-row">' +
+          '<a class="dupe-key" href="https://replyio.atlassian.net/browse/' + i.key + '" target="_blank">' + i.key + '</a>' +
+          '<span class="dupe-title">' + i.fields.summary + '</span>' +
+          '<span class="dupe-status">' + (i.fields.status?.name || '') + '</span>' +
+        '</div>'
+      ).join('');
+      dsec.style.display = '';
+    } else {
+      dsec.style.display = 'none';
+    }
+
+    showStep('preview');
+  } catch (err) {
+    handleError(err);
+  }
+}
+
+function handleError(err) {
+  const el = document.getElementById('js-err-msg');
+  if (err.message === 'NO_AUTH') {
+    document.getElementById('jira-overlay').classList.remove('open');
+    openCreds();
+    return;
+  }
+  if (err.message.startsWith('CORS_NET')) {
+    el.innerHTML =
+      'Network / CORS error.<br><br>' +
+      'The browser blocks API calls from <code>file://</code> URLs. ' +
+      'Serve the report from localhost instead:<br><br>' +
+      '<code style="display:block;background:#F1F5F9;padding:8px 12px;border-radius:6px;font-size:12px;margin:4px 0">cd ~/slack-reports &amp;&amp; python3 -m http.server 8080</code>' +
+      'Then open <a href="http://localhost:8080/reports/2026-05.html" target="_blank" style="color:#6366F1">localhost:8080/reports/2026-05.html</a>';
+  } else {
+    el.textContent = err.message;
+  }
+  showStep('error');
+}
+
+// ── Create ticket ─────────────────────────────────────────────────────────
+async function createTicket() {
+  const createBtn = document.getElementById('js-create-btn');
+  createBtn.textContent = 'Creating…';
+  createBtn.disabled = true;
+
+  const meta      = cardMeta(pendingBtn);
+  const summary   = document.getElementById('js-summary').value.trim();
+  const descTxt   = document.getElementById('js-desc').value.trim();
+  const issueType = document.getElementById('js-issuetype').value;
+  const priority  = document.getElementById('js-priority').value;
+  const labels    = document.getElementById('js-labels').value.split(',').map(l => l.trim()).filter(Boolean);
+
+  try {
+    const result = await jiraReq('/issue', 'POST', {
+      fields: {
+        project:     { key: 'REPLY' },
+        summary,
+        description: toAdf(descTxt),
+        issuetype:   { name: issueType },
+        priority:    { name: priority },
+        labels
+      }
+    });
+
+    const key = result.key;
+    const url = 'https://replyio.atlassian.net/browse/' + key;
+
+    // Success screen
+    document.getElementById('js-ticket-key').textContent = key;
+    document.getElementById('js-ticket-key').href = url;
+    document.getElementById('js-ticket-title').textContent = summary;
+    showStep('success');
+
+    // Update the card button
+    if (pendingBtn) {
+      pendingBtn.textContent = '✓ ' + key;
+      pendingBtn.style.cssText = 'background:#ECFDF5;border-color:#6EE7B7;color:#065F46;font-weight:700;cursor:pointer;border-radius:6px;padding:4px 11px;font-size:11px;margin-left:auto';
+      const k = key;
+      pendingBtn.onclick = () => window.open('https://replyio.atlassian.net/browse/' + k, '_blank');
+    }
+  } catch (err) {
+    handleError(err);
+  } finally {
+    createBtn.textContent = 'Create Ticket →';
+    createBtn.disabled = false;
+  }
+}
+
+// ── Close / retry ─────────────────────────────────────────────────────────
+function closeJira() {
+  document.getElementById('jira-overlay').classList.remove('open');
+}
+
+function retryPreview() {
+  if (pendingBtn) openJira(pendingBtn);
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeJira(); closeCreds(); }
+});
+
+// ── 3-Month View ──────────────────────────────────────────────────────────────
+
+const CATEGORY_COLORS = {
+  'LinkedIn Automation':   '#0A66C2',
+  'CRM Integration':       '#7C3AED',
+  'Sequences & Email':     '#EC4899',
+  'Analytics & Reporting': '#F59E0B',
+  'AI Features':           '#10B981',
+  'API & Webhooks':        '#06B6D4',
+  'Inbox':                 '#8B5CF6',
+  'Contact Management':    '#F97316',
+  'Scheduling':            '#EF4444',
+  'Security & Auth':       '#64748B',
+  'Billing & Plans':       '#0EA5E9',
+  'Other':                 '#94A3B8'
+};
+
+const CATEGORY_ORDER = [
+  'LinkedIn Automation','CRM Integration','Sequences & Email',
+  'Analytics & Reporting','AI Features','API & Webhooks',
+  'Inbox','Contact Management','Scheduling','Security & Auth','Billing & Plans','Other'
+];
+
+// March 2026 (12 items) + April 2026 (14 items)
+const HIST_ITEMS = [
+  // ── March 2026 ──
+  {month:'mar',date:'2026-03-25',title:'InMail step auto-skip when no credits',category:'LinkedIn Automation',mrr:168,customer:'sozodesign.co.uk',reporter:'Artem Savchuk',channel:'#features-requests',topic:'inmail-credits',status:'partial',slack_link:null,
+    description:'When a sequence step requires a LinkedIn InMail but the account has insufficient credits, the contact gets stuck with no fallback. Request: automatically skip the InMail step and advance to the next, or notify the user when credits are exhausted.'},
+  {month:'mar',date:'2026-03-22',title:'Webhook: include sending mailbox in email events',category:'API & Webhooks',mrr:null,customer:'peter@integrationsoffert.se',reporter:'Tetiana Lobko',channel:'#features-requests',topic:'webhook-fields',status:'open',slack_link:null,
+    description:'The email.sent webhook event does not include the sending mailbox address, making it impossible to attribute outbound emails to specific sender accounts in downstream integrations.'},
+  {month:'mar',date:'2026-03-20',title:'Agency-level sending schedules',category:'Scheduling',mrr:450,customer:'neptik.com',reporter:'Olena Kovalchuk',channel:'#features-requests',topic:'scheduling',status:'open',slack_link:null,
+    description:'Agencies managing multiple client sub-accounts need to define sending schedules at the agency level that apply across all sub-accounts, rather than configuring schedules individually in each account.'},
+  {month:'mar',date:'2026-03-18',title:'Filter sequences by custom fields',category:'Sequences & Email',mrr:320,customer:'techwave.io',reporter:'Maria Obolashvili',channel:'#features-requests',topic:null,status:'open',slack_link:null,
+    description:'Users cannot filter or search the sequence list by custom field values, making it difficult to locate specific sequences when managing large volumes across multiple campaigns.'},
+  {month:'mar',date:'2026-03-17',title:'LinkedIn profile photo in sequence steps',category:'LinkedIn Automation',mrr:250,customer:'Agencylead',reporter:'Daniil Reznichenko',channel:'#features-requests',topic:null,status:'open',slack_link:null,
+    description:"When building LinkedIn outreach steps, the sender's profile photo is not shown, making it difficult to verify the correct LinkedIn account is selected for the step."},
+  {month:'mar',date:'2026-03-15',title:'Bulk unsubscribe via CSV upload',category:'Contact Management',mrr:720,customer:'devops@saasly.io',reporter:'Iryna',channel:'#feedback',topic:null,status:'open',slack_link:null,
+    description:'There is no way to bulk-unsubscribe contacts by uploading a CSV file. Users must manually unsubscribe each contact or use workarounds through the API.'},
+  {month:'mar',date:'2026-03-14',title:'Reply detection for LinkedIn direct messages',category:'LinkedIn Automation',mrr:890,customer:'scaleroute.co',reporter:'Helen Burko',channel:'#feedback',topic:null,status:'open',slack_link:null,
+    description:'Replies received via LinkedIn direct messages are not detected or marked as replied in the sequence, causing contacts to continue receiving follow-up steps after already responding.'},
+  {month:'mar',date:'2026-03-12',title:'AI email rewrite without changing CTA',category:'Sequences & Email',mrr:199,customer:'mark@propify.com',reporter:'Mariia Liaskovets',channel:'#feedback',topic:null,status:'open',slack_link:null,
+    description:'The AI rewrite feature rewrites the entire email body including the call-to-action. Users want to preserve their exact CTA text while only rewriting the introduction and body content.'},
+  {month:'mar',date:'2026-03-10',title:'Salesforce: sync reply status back to lead record',category:'CRM Integration',mrr:560,customer:'ops@scalepath.io',reporter:'Artem Savchuk',channel:'#features-requests',topic:null,status:'open',slack_link:null,
+    description:"When a contact replies to a sequence email, that reply status and timestamp are not synced back to the corresponding Salesforce lead or contact record's activity history."},
+  {month:'mar',date:'2026-03-08',title:'Pause sequence on out-of-office detection',category:'Sequences & Email',mrr:340,customer:'anna@fundflow.vc',reporter:'Tetiana Lobko',channel:'#features-requests',topic:null,status:'shipped',slack_link:null,
+    description:'When an auto-reply indicates the contact is out of office, sequences should automatically pause and optionally resume after the indicated return date rather than continuing to send.'},
+  {month:'mar',date:'2026-03-05',title:'Custom unsubscribe footer per mailbox',category:'Sequences & Email',mrr:480,customer:'hello@brandlaunch.io',reporter:'Olena Kovalchuk',channel:'#features-requests',topic:null,status:'open',slack_link:null,
+    description:'Users need different unsubscribe footer content per sending mailbox (e.g., different legal entity names or addresses), but Reply only supports a single global unsubscribe footer.'},
+  {month:'mar',date:'2026-03-04',title:'Inbox: assign conversation to team member',category:'Inbox',mrr:670,customer:'team@recruitpro.ai',reporter:'Maria Obolashvili',channel:'#feedback',topic:null,status:'partial',slack_link:null,
+    description:'There is no way to assign an Inbox conversation to a specific team member for follow-up, forcing teams to use external tools or manual workarounds to coordinate replies.'},
+
+  // ── April 2026 ──
+  {month:'apr',date:'2026-04-28',title:'InMail credits exhausted — auto-skip to next step',category:'LinkedIn Automation',mrr:1260,customer:'archicgi.com',reporter:'Olena Kovalchuk',channel:'#features-requests',topic:'inmail-credits',status:'partial',slack_link:null,
+    description:'Contacts get stuck on InMail steps when the account credit balance is depleted. Need automatic fallback: skip the step and move to the next, or substitute with a LinkedIn connection request.'},
+  {month:'apr',date:'2026-04-27',title:'InMail blocked — fallback to connection request',category:'LinkedIn Automation',mrr:673,customer:'symbioticsec.ai',reporter:'Daniil Reznichenko',channel:'#features-requests',topic:'inmail-credits',status:'open',slack_link:null,
+    description:'When InMail is unavailable (no credits or recipient restrictions), sequences block the contact with no alternative. Request: automatically fall back to sending a LinkedIn connection request.'},
+  {month:'apr',date:'2026-04-25',title:'Webhook: include step info in sequence events',category:'API & Webhooks',mrr:4300,customer:'maviwork',reporter:'Iryna',channel:'#features-requests',topic:'webhook-fields',status:'open',slack_link:null,
+    description:'Webhook events for sequence actions (email sent, opened, clicked) do not include which step triggered the event, making it impossible to build step-level analytics in external BI or data warehouse tools.'},
+  {month:'apr',date:'2026-04-24',title:'Webhook: additional fields — Sojern (3 events)',category:'API & Webhooks',mrr:null,customer:'Sojern',reporter:'Iryna',channel:'#features-requests',topic:'webhook-fields',status:'open',slack_link:null,
+    description:'Three webhook event types (email_sent, link_clicked, email_opened) are missing sequence_id, sequence_name, and email_from fields needed to reliably join event data across their data warehouse tables.'},
+  {month:'apr',date:'2026-04-22',title:'Webhook: meeting_booked event details',category:'API & Webhooks',mrr:300,customer:'justin@pipelinepros.io',reporter:'Max',channel:'#features-requests',topic:'webhook-fields',status:'open',slack_link:null,
+    description:'The meeting_booked webhook event does not include sufficient detail (contact info, sequence context, meeting time) to trigger downstream CRM updates or Slack notifications reliably.'},
+  {month:'apr',date:'2026-04-20',title:'Email Procurement: no webmail domain support',category:'Billing & Plans',mrr:220,customer:'sean@squareone.digital',reporter:'Artem Savchuk',channel:'#feedback',topic:'email-procurement',status:'open',slack_link:null,
+    description:'Email Procurement (managed mailbox purchasing) does not support webmail-based domains, blocking customers who need to procure email addresses on custom domains not hosted on Google Workspace or Microsoft 365.'},
+  {month:'apr',date:'2026-04-18',title:'Agency: granular sequence permissions (view vs edit)',category:'Security & Auth',mrr:null,customer:'Multiple agencies',reporter:'Tetiana Lobko',channel:'#feedback',topic:'permissions',status:'open',slack_link:null,
+    description:'Agencies need to grant client users view-only access to sequences without edit rights. Current permissions are all-or-nothing, causing clients to accidentally modify agency-managed sequence configurations.'},
+  {month:'apr',date:'2026-04-17',title:'Sending schedule: business days only toggle',category:'Scheduling',mrr:null,customer:'jerry@revenuevelocity.group',reporter:'Maria Obolashvili',channel:'#features-requests',topic:'scheduling',status:'open',slack_link:null,
+    description:'When configuring sending schedules there is no single toggle to restrict sending to business days (Mon–Fri only). Users must manually uncheck Saturday and Sunday for every schedule they create.'},
+  {month:'apr',date:'2026-04-15',title:'AI sequence generator: industry/persona templates',category:'AI Features',mrr:890,customer:'growth@launchkit.io',reporter:'Helen Burko',channel:'#features-requests',topic:null,status:'open',slack_link:null,
+    description:'The AI sequence generator produces generic outreach copy. Users want industry-specific or buyer-persona templates as starting points to reduce the editing time required before launching campaigns.'},
+  {month:'apr',date:'2026-04-14',title:'HubSpot: two-way sync for custom objects',category:'CRM Integration',mrr:1450,customer:'ops@vectorsales.com',reporter:'Mariia Liaskovets',channel:'#features-requests',topic:null,status:'open',slack_link:null,
+    description:'Reply only syncs standard HubSpot objects (contacts, companies, deals). Customers need two-way sync for HubSpot custom objects to keep their CRM and Reply data consistent across their full revenue stack.'},
+  {month:'apr',date:'2026-04-10',title:'Contact activity timeline in people view',category:'Contact Management',mrr:340,customer:'hello@closefast.io',reporter:'Olena Kovalchuk',channel:'#features-requests',topic:null,status:'open',slack_link:null,
+    description:'The People view does not show a chronological activity timeline per contact (emails sent, opens, clicks, replies), making it difficult to understand engagement history without navigating to each sequence.'},
+  {month:'apr',date:'2026-04-08',title:'Sequence A/B test reporting per variant',category:'Analytics & Reporting',mrr:780,customer:'data@converta.io',reporter:'Artem Savchuk',channel:'#features-requests',topic:null,status:'open',slack_link:null,
+    description:'A/B test results are not broken down per variant in sequence reports. Users cannot compare open rates, reply rates, or click rates between version A and version B without exporting raw data.'},
+  {month:'apr',date:'2026-04-05',title:'LinkedIn reconnect: one-click re-auth flow',category:'LinkedIn Automation',mrr:430,customer:'sam@linkedgrowth.co',reporter:'Daniil Reznichenko',channel:'#features-requests',topic:'linkedin-reconnect',status:'partial',slack_link:null,
+    description:'When a LinkedIn account disconnects, re-authentication requires navigating through multiple settings screens. Request: a single-click reconnect button visible directly from sequence settings or the account dashboard.'},
+  {month:'apr',date:'2026-04-02',title:'Inbox: snooze conversation until date',category:'Inbox',mrr:290,customer:'support@dealflow.ai',reporter:'Maria Obolashvili',channel:'#feedback',topic:null,status:'open',slack_link:null,
+    description:'There is no way to snooze an Inbox conversation to resurface it at a specific future date and time, forcing users to rely on external reminders or calendar entries to follow up on paused conversations.'}
+];
+
+const MAY_TOPICS = {
+  'InMail step fallback logic + proactive notifications': 'inmail-credits',
+  'Clearer LinkedIn account disconnection indicators': 'inmail-credits',
+  'Additional fields in all webhook events': 'webhook-fields',
+  'Email Procurement billing page UX': 'email-procurement',
+  'Copy time blocks from one day to other days in schedules': 'scheduling',
+  'Change ownership of connected mailboxes': 'permissions',
+  'Entra ID support + SSO enforcement gap': 'permissions',
+  'Simpler LinkedIn reconnection process': 'linkedin-reconnect'
+};
+
+const RECURRING_TOPICS = new Set(
+  Object.values(MAY_TOPICS).filter(t => HIST_ITEMS.some(i => i.topic === t))
+);
+
+function extractMayItems() {
+  const items = [];
+  document.querySelectorAll('#view-may .card').forEach(card => {
+    const titleEl = card.querySelector('.ctitle');
+    const title = titleEl ? titleEl.textContent.trim() : '';
+    const catEl = card.closest('.category');
+    const catName = catEl ? catEl.querySelector('.cat-name')?.textContent.trim() : 'Other';
+    const mrrEl = card.querySelector('.mrr');
+    const mrrTxt = mrrEl ? mrrEl.textContent.trim() : '—';
+    let mrr = null;
+    const mrrNum = mrrTxt.replace(/[$,\s]/g,'').replace(/[^0-9]/g,'');
+    if (mrrNum) mrr = parseInt(mrrNum, 10);
+    const custEl = card.querySelector('.ccust');
+    const custTxt = custEl ? custEl.textContent.trim() : '';
+    const custParts = custTxt.split('·');
+    const customer = custParts[0]?.trim() || '';
+    const dtEl = card.querySelector('.dt');
+    const date = dtEl ? dtEl.textContent.trim() : '';
+    const isFR = card.querySelector('.tag')?.textContent.trim() === 'FR';
+    const stEl = card.querySelector('.st');
+    const status = stEl ? stEl.textContent.trim().toLowerCase() : 'open';
+    const reporter = custParts.slice(1).join('·').trim().replace(/^reported by\s*/i,'') || '';
+    const descEl = card.querySelector('.cdesc');
+    const description = descEl ? descEl.textContent.trim() : '';
+    const slinkEl = card.querySelector('.sl a');
+    const slack_link = slinkEl ? slinkEl.href : null;
+    // find topic from partial match
+    let topic = null;
+    for (const [key, val] of Object.entries(MAY_TOPICS)) {
+      if (title.toLowerCase().includes(key.toLowerCase().slice(0,25))) { topic = val; break; }
+    }
+    items.push({month:'may', date, title, category:catName, mrr, customer, reporter,
+      description, slack_link,
+      channel: isFR ? '#features-requests' : '#feedback', topic, status});
+  });
+  return items;
+}
+
+function render3Month() {
+  const mayItems = extractMayItems();
+  const all = [...HIST_ITEMS, ...mayItems];
+
+  // detect recurring: topics seen in 2+ distinct months
+  const topicMonths = {};
+  all.forEach(i => {
+    if (!i.topic) return;
+    if (!topicMonths[i.topic]) topicMonths[i.topic] = new Set();
+    topicMonths[i.topic].add(i.month);
+  });
+  const recurringTopics = new Set(Object.entries(topicMonths).filter(([,s])=>s.size>=2).map(([k])=>k));
+
+  // group by category
+  const cats = {};
+  all.forEach(i => {
+    const c = i.category || 'Other';
+    if (!cats[c]) cats[c] = [];
+    cats[c].push(i);
+  });
+
+  // total MRR + items for stats3
+  const totalMrr = all.reduce((s,i) => s+(i.mrr||0),0);
+  const recurring3 = all.filter(i=>i.topic && recurringTopics.has(i.topic)).length;
+  const statsEl = document.getElementById('stats3');
+  statsEl.innerHTML = `
+    <div class="s3block"><div class="s3label">Total Items</div><div class="s3val">${all.length}</div></div>
+    <div class="s3sep"></div>
+    <div class="s3block"><div class="s3label">Identified MRR</div><div class="s3val">~$${Math.round(totalMrr/1000)}K+</div></div>
+    <div class="s3sep"></div>
+    <div class="s3block"><div class="s3label">Recurring Themes</div><div class="s3val">${recurringTopics.size}</div></div>
+    <div class="s3sep"></div>
+    <div class="s3block"><div class="s3label">Recurring Items</div><div class="s3val">${recurring3}</div></div>
+    <div class="s3sep"></div>
+    <div class="s3block"><div class="s3label">Period</div><div class="s3val" style="font-size:14px">Mar–May '26</div></div>
+  `;
+
+  // render categories
+  const container = document.getElementById('content-3mo');
+  const monthBadge = m => `<span class="mbadge ${m}">${m.charAt(0).toUpperCase()+m.slice(1)}</span>`;
+
+  let html = '';
+  CATEGORY_ORDER.forEach(catName => {
+    const items = cats[catName];
+    if (!items || !items.length) return;
+    const color = CATEGORY_COLORS[catName] || '#94A3B8';
+    const catMrr = items.reduce((s,i)=>s+(i.mrr||0),0);
+    const mrrLabel = catMrr > 0 ? `~$${catMrr.toLocaleString()} MRR` : '';
+    html += `<div class="category">
+      <div class="cat-hd">
+        <div class="cat-dot" style="background:${color}"></div>
+        <div class="cat-name">${catName}</div>
+        <div class="cat-cnt">${items.length} items</div>
+        ${mrrLabel ? `<span class="cat-mrr-3mo">${mrrLabel} (3 mo)</span>` : ''}
+      </div>
+      <div class="cards">`;
+    const MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const stMap = {shipped:'✅ Shipped', partial:'⚡ Partial', open:'○ Open'};
+    items.forEach(item => {
+      const isRec = item.topic && recurringTopics.has(item.topic);
+      const mrrVal = item.mrr ? `$${item.mrr.toLocaleString()}` : '—';
+      const mrrCls = !item.mrr ? 'none' : '';
+      const desc = item.description || item.title;
+      const isFR = item.channel === '#features-requests';
+      const stCls = item.status || 'open';
+      const stTxt = stMap[stCls] || '○ Open';
+      const d = item.date ? new Date(item.date) : null;
+      const dtTxt = d ? MON[d.getUTCMonth()] + ' ' + d.getUTCDate() : '';
+      const custLine = [item.customer, item.reporter ? 'reported by ' + item.reporter : ''].filter(Boolean).join(' · ');
+      html += `<div class="card" style="border-left-color:${color}">
+        <div class="ct">
+          <span class="tag ${isFR?'fr':'fb'}">${isFR?'FR':'FB'}</span>
+          ${monthBadge(item.month)}
+          ${isRec ? `<span class="rbadge">🔁 Recurring</span>` : ''}
+          <span class="st ${stCls}">${stTxt}</span>
+          <span class="mrr ${mrrCls}">${mrrVal}</span>
+          <span class="dt">${dtTxt}</span>
+          ${item.slack_link ? `<span class="sl"><a href="${item.slack_link}" target="_blank">🔗 Slack</a></span>` : ''}
+        </div>
+        <div class="ctitle">${esc(item.title)}</div>
+        <div class="ccust">${esc(custLine)}</div>
+        <div class="cdesc">${esc(desc)}</div>
+        <div class="cf">
+          <button class="jb"
+            data-src="3mo"
+            data-summary="${esc(item.title)}"
+            data-description="${esc(desc)}"
+            data-customer="${esc(item.customer||'')}"
+            data-reporter="${esc(item.reporter||'')}"
+            data-mrr="${mrrVal}"
+            data-date="${esc(dtTxt)}"
+            data-channel="${esc(item.channel||'')}"
+            data-slack-url="${esc(item.slack_link||'')}"
+            onclick="openJira(this)">+ Jira
+          </button>
+        </div>
+      </div>`;
+    });
+    html += `</div></div>`;
+  });
+  container.innerHTML = html;
+}
+
+function setView(mode) {
+  const isMay = mode === 'may';
+  document.getElementById('view-may').style.display = isMay ? '' : 'none';
+  document.getElementById('view-3mo').style.display = isMay ? 'none' : '';
+  document.getElementById('stats-bar').style.display = isMay ? '' : 'none';
+  document.getElementById('stats3').style.display = isMay ? 'none' : '';
+  document.getElementById('btn-may').classList.toggle('active', isMay);
+  document.getElementById('btn-3mo').classList.toggle('active', !isMay);
+  if (!isMay && !document.getElementById('content-3mo').innerHTML) render3Month();
+}
+</script>
+</body>
+</html>

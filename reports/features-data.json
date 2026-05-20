@@ -1,0 +1,310 @@
+{
+  "channel": "#features-requests",
+  "channel_id": "C0JAQM4P9",
+  "period": "2026-05",
+  "fetched_at": "2026-05-20",
+  "total_messages": 17,
+  "messages": [
+    {
+      "ts": "1779129386.413549",
+      "slack_link": "https://replyteam.slack.com/archives/C0JAQM4P9/p1779129386413549",
+      "date": "2026-05-18",
+      "reporter": "Artem Savchuk",
+      "customer_email": "loriol@toogoodtogo.com",
+      "mrr": 229,
+      "mrr_label": "$229",
+      "title": "Hybrid Salesforce sync matching by Email AND Lead/Contact ID",
+      "description": "Support matching by both email address AND Lead/Contact ID simultaneously so each Reply contact reliably links to the correct Salesforce record even when duplicate emails exist.",
+      "category": "CRM Integration",
+      "thread_replies": []
+    },
+    {
+      "ts": "1779113910.933169",
+      "slack_link": "https://replyteam.slack.com/archives/C0JAQM4P9/p1779113910933169",
+      "date": "2026-05-18",
+      "reporter": "Tetiana Lobko",
+      "customer_email": "fkabir@ascend-co.com",
+      "mrr": 179,
+      "mrr_label": "$179",
+      "title": "HubSpot dropdown — sync from Label instead of Internal Name",
+      "description": "When syncing dropdown field values from HubSpot, Reply currently maps from the Internal Name field. User wants to sync from the Label field so human-readable display names appear in Reply.",
+      "category": "CRM Integration",
+      "thread_replies": []
+    },
+    {
+      "ts": "1779099031.667209",
+      "slack_link": "https://replyteam.slack.com/archives/C0JAQM4P9/p1779099031667209",
+      "date": "2026-05-18",
+      "reporter": "Tetiana Lobko",
+      "customer_email": "sadler@oneeagleadvisory.com",
+      "mrr": 499,
+      "mrr_label": "$499",
+      "title": "Bulk export or API for mailbox sending stats",
+      "description": "User wants daily bulk data export or API endpoint to pull mailbox health/sending stats programmatically. Currently must manually check each account. Use case: automation to detect errors and verify sending volumes without manual review.",
+      "category": "Analytics & Reporting",
+      "thread_replies": []
+    },
+    {
+      "ts": "1778854646.715789",
+      "slack_link": "https://replyteam.slack.com/archives/C0JAQM4P9/p1778854646715789",
+      "date": "2026-05-15",
+      "reporter": "Iryna",
+      "customer_email": "o.nikitin@ability.ai",
+      "mrr": 337,
+      "mrr_label": "$337",
+      "title": "Support variables inside custom fields",
+      "description": "User uploads CSV with email templates as custom fields per contact, including First name and Company variables, but the system shows them as Missing data instead of resolving them.",
+      "category": "Sequences & Email",
+      "thread_replies": [
+        {
+          "ts": "1779026163.124589",
+          "author": "Lesya Magas",
+          "time": "2026-05-17 16:56",
+          "text": "Ai custom fields do that!"
+        },
+        {
+          "ts": "1779030574.330429",
+          "author": "Iryna",
+          "time": "2026-05-17 18:09",
+          "text": "for context - user uploads the csv file with email templates as a custom fields for each contact, instead of typing the email inside the sequence. He has First name and Company variable in this custom fields, but now the system is not adding first and company name and shows these fields as Missing data. So, I am not sure how AI custom field will work here, should user change regular fields to AI?"
+        },
+        {
+          "ts": "1779127291.653759",
+          "author": "Lesya Magas",
+          "time": "2026-05-18 21:01",
+          "text": "That's a weird flow, why don't they use email templates?"
+        },
+        {
+          "ts": "1779127312.905339",
+          "author": "Lesya Magas",
+          "time": "2026-05-18 21:01",
+          "text": "why dont they create a template and select it in the sequence?"
+        },
+        {
+          "ts": "1779129240.546199",
+          "author": "Iryna",
+          "time": "2026-05-18 21:34",
+          "text": "Maybe they have personalized templates for each client, I don't know"
+        }
+      ]
+    },
+    {
+      "ts": "1778800863.672289",
+      "slack_link": "https://replyteam.slack.com/archives/C0JAQM4P9/p1778800863672289",
+      "date": "2026-05-15",
+      "reporter": "Olena Kovalchuk",
+      "customer_email": "sales@p-product.com",
+      "mrr": 1289,
+      "mrr_label": "$1,289",
+      "title": "LinkedIn connection request monitoring across accounts",
+      "description": "User manages multiple campaigns with rotating LinkedIn accounts and needs a centralized way to monitor pending/queued connection requests per LinkedIn account to balance account load efficiently. Current workaround via filters is too manual and hard to scale.",
+      "category": "LinkedIn Automation",
+      "thread_replies": []
+    },
+    {
+      "ts": "1778708834.068829",
+      "slack_link": "https://replyteam.slack.com/archives/C0JAQM4P9/p1778708834068829",
+      "date": "2026-05-14",
+      "reporter": "Olena Kovalchuk",
+      "customer_email": "Peoplelinx",
+      "mrr": null,
+      "mrr_label": "—",
+      "title": "Edit or delete saved canned responses",
+      "description": "Users cannot modify or remove canned responses once saved. Request: add edit and delete actions to manage the saved canned response library.",
+      "category": "Inbox",
+      "thread_replies": []
+    },
+    {
+      "ts": "1778708773.268219",
+      "slack_link": "https://replyteam.slack.com/archives/C0JAQM4P9/p1778708773268219",
+      "date": "2026-05-14",
+      "reporter": "Olena Kovalchuk",
+      "customer_email": "smm@mirigos.com",
+      "mrr": 530,
+      "mrr_label": "$530",
+      "title": "Custom AI model via API key for copywriting",
+      "description": "User wants to connect their own AI model via API key for copywriting within Reply instead of using the built-in AI.",
+      "category": "AI Features",
+      "thread_replies": []
+    },
+    {
+      "ts": "1778700651.690489",
+      "slack_link": "https://replyteam.slack.com/archives/C0JAQM4P9/p1778700651690489",
+      "date": "2026-05-13",
+      "reporter": "Maria Obolashvili",
+      "customer_email": "jerry@revenuevelocity.group",
+      "mrr": 59,
+      "mrr_label": "$59",
+      "title": "Copy time blocks from one day to other days in schedules",
+      "description": "When configuring sending schedules, users must re-enter the same time blocks for each day manually. Request: add a 'copy to other days' or 'apply to all' action.",
+      "category": "Scheduling",
+      "thread_replies": []
+    },
+    {
+      "ts": "1778685190.419619",
+      "slack_link": "https://replyteam.slack.com/archives/C0JAQM4P9/p1778685190419619",
+      "date": "2026-05-13",
+      "reporter": "Mariia Liaskovets",
+      "customer_email": "david@coastalwipers.com",
+      "mrr": 500,
+      "mrr_label": "$500",
+      "title": "Save / pre-save CTA per sequence",
+      "description": "When creating sequences for different audiences, the CTA often stays the same. User wants to pre-save a default CTA per sequence. Not urgent.",
+      "category": "Sequences & Email",
+      "thread_replies": []
+    },
+    {
+      "ts": "1778677666.767659",
+      "slack_link": "https://replyteam.slack.com/archives/C0JAQM4P9/p1778677666767659",
+      "date": "2026-05-13",
+      "reporter": "Helen Burko",
+      "customer_email": "kamile@s-e.lt",
+      "mrr": 500,
+      "mrr_label": "$500",
+      "title": "Lithuanian language support for AI voice messages",
+      "description": "Customer wants Lithuanian as a supported language for AI voice messages. Currently not available. Team confirmed it cannot be added right now but will explore ways to extend the language list.",
+      "category": "AI Features",
+      "thread_replies": [
+        {
+          "ts": "1778679953.197479",
+          "author": "Lesya Magas",
+          "time": "2026-05-13 16:45",
+          "text": "@Inna Perlovska can we?"
+        },
+        {
+          "ts": "1778681195.113359",
+          "author": "Inna Perlovska",
+          "time": "2026-05-13 17:06",
+          "text": "I'll check",
+          "reactions": ["raised_hands"]
+        },
+        {
+          "ts": "1778690875.990379",
+          "author": "Inna Perlovska",
+          "time": "2026-05-13 19:47",
+          "text": "right now we cannot add Lithuanian"
+        },
+        {
+          "ts": "1778690882.561279",
+          "author": "Inna Perlovska",
+          "time": "2026-05-13 19:48",
+          "text": "But I will think about possible ways to extend the list of supported languages in the future",
+          "reactions": ["saluting_face"]
+        }
+      ]
+    },
+    {
+      "ts": "1778676490.171149",
+      "slack_link": "https://replyteam.slack.com/archives/C0JAQM4P9/p1778676490171149",
+      "date": "2026-05-13",
+      "reporter": "Daniil Reznichenko",
+      "customer_email": "admin@salesar.io",
+      "mrr": 696,
+      "mrr_label": "$696 (Agency)",
+      "title": "Change ownership of connected mailboxes",
+      "description": "Add the option to change the ownership of connected mailboxes.",
+      "category": "Security & Auth",
+      "notes": "Added to backlog",
+      "thread_replies": [
+        {
+          "ts": "1778680007.957499",
+          "author": "Lesya Magas",
+          "time": "2026-05-13 16:46",
+          "text": "@Inna Perlovska let's take this one in the backlog",
+          "reactions": ["writing_hand"]
+        }
+      ]
+    },
+    {
+      "ts": "1778587434.817109",
+      "slack_link": "https://replyteam.slack.com/archives/C0JAQM4P9/p1778587434817109",
+      "date": "2026-05-12",
+      "reporter": "Iryna",
+      "customer_email": "Sojern",
+      "mrr": null,
+      "mrr_label": "—",
+      "title": "Additional fields in all webhook events",
+      "description": "Request to include sequence_id, sequence_name, and email_from fields consistently in all webhook events (email sent, opened, link clicked, etc.) to improve join reliability across datasets.",
+      "category": "API & Webhooks",
+      "thread_replies": [
+        {
+          "ts": "1778587904.039079",
+          "author": "Max",
+          "time": "2026-05-12 15:11",
+          "text": "Hey Iryna, I think it's worth posting any API related requests/questions in our new API Community - https://replyio-api-community.slack.com/ssb/redirect"
+        },
+        {
+          "ts": "1778588342.161089",
+          "author": "Iryna",
+          "time": "2026-05-12 15:19",
+          "text": "Will do, thanks!"
+        }
+      ]
+    },
+    {
+      "ts": "1778506064.593079",
+      "slack_link": "https://replyteam.slack.com/archives/C0JAQM4P9/p1778506064593079",
+      "date": "2026-05-11",
+      "reporter": "Artem Savchuk",
+      "customer_email": "luiza@gradienthealth.io",
+      "mrr": 89,
+      "mrr_label": "$89",
+      "title": "Clearer LinkedIn account disconnection indicators",
+      "description": "It's not obvious when a LinkedIn account is disconnected. Request: show LinkedIn account status (inactive/disconnected or insufficient InMail credits) directly in sequence settings, and add an in-app notification when an account becomes disconnected.",
+      "category": "LinkedIn Automation",
+      "thread_replies": []
+    },
+    {
+      "ts": "1778018956.537879",
+      "slack_link": "https://replyteam.slack.com/archives/C0JAQM4P9/p1778018956537879",
+      "date": "2026-05-06",
+      "reporter": "Olena Kovalchuk",
+      "customer_email": "german@therevenuelabs.com",
+      "mrr": 500,
+      "mrr_label": "$500",
+      "title": "InMail step fallback logic + proactive notifications",
+      "description": "Contacts get stuck in InMail steps when no credits are available. No proactive notification AND no fallback/auto-skip logic. Two gaps: (1) no notification when InMail steps can't execute, (2) no fallback when step is blocked. Confirmed by a second user.",
+      "category": "LinkedIn Automation",
+      "thread_replies": []
+    },
+    {
+      "ts": "1778002911.734469",
+      "slack_link": "https://replyteam.slack.com/archives/C0JAQM4P9/p1778002911734469",
+      "date": "2026-05-05",
+      "reporter": "Maria Obolashvili",
+      "customer_email": "jerry@revenuevelocity.group",
+      "mrr": null,
+      "mrr_label": "Trial",
+      "title": "CSV partial field update — preserve unmapped fields",
+      "description": "When uploading CSV to update only one field (e.g. phone number), 'update' option clears unmapped fields; 'skip' leaves contact untouched. Need a third option: update only mapped fields, preserve all others.",
+      "category": "Contact Management",
+      "thread_replies": []
+    },
+    {
+      "ts": "1777907897.395329",
+      "slack_link": "https://replyteam.slack.com/archives/C0JAQM4P9/p1777907897395329",
+      "date": "2026-05-04",
+      "reporter": "Maria Obolashvili",
+      "customer_email": "Peoplelinx",
+      "mrr": null,
+      "mrr_label": "—",
+      "title": "Separate columns for Reply Count and Reply Rate in Email Report",
+      "description": "Currently Replies and Reply Rate can't be shown as separate columns simultaneously. Request mirrors how Clicks and CTR are displayed as distinct side-by-side columns.",
+      "category": "Analytics & Reporting",
+      "thread_replies": []
+    },
+    {
+      "ts": "1777895196.675479",
+      "slack_link": "https://replyteam.slack.com/archives/C0JAQM4P9/p1777895196675479",
+      "date": "2026-05-04",
+      "reporter": "Max",
+      "customer_email": "SalesAR (Agency)",
+      "mrr": 630,
+      "mrr_label": "$630 (Agency)",
+      "title": "Contact distribution methods across LinkedIn sender profiles",
+      "description": "Allow different distribution methods for contacts across LinkedIn profiles in a sequence: rotate to new sender, prioritize profiles with prior engagement, fair balance rotation, random rotation. Customer migrating from Grinfi.io.",
+      "category": "LinkedIn Automation",
+      "thread_replies": []
+    }
+  ]
+}

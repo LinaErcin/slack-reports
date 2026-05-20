@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feature Requests — May 2026 | Reply.io</title>
+  <style>
+    :root {
+      --c-linkedin:   #0A66C2;
+      --c-crm:        #EA580C;
+      --c-ai:         #8B5CF6;
+      --c-analytics:  #10B981;
+      --c-sequences:  #EC4899;
+      --c-account:    #64748B;
+      --c-inbox:      #F59E0B;
+      --c-contacts:   #06B6D4;
+      --c-scheduling: #6366F1;
+      --c-api:        #7C3AED;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', system-ui, sans-serif;
+      background: #F1F5F9;
+      color: #1E293B;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    /* ── Header ───────────────────────────────────────────────── */
+    .header {
+      background: linear-gradient(135deg, #0F0A2E 0%, #1E1B4B 40%, #3730A3 100%);
+      color: #fff;
+      padding: 48px 48px 44px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(99,102,241,0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: 20%;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(139,92,246,0.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .header-inner {
+      position: relative;
+      max-width: 1020px;
+      margin: 0 auto;
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 28px;
+    }
+
+    .brand {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-dot {
+      width: 6px; height: 6px;
+      background: #818CF8;
+      border-radius: 50%;
+    }
+
+    .header-channel {
+      font-size: 11px;
+      font-weight: 600;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 4px 12px;
+      border-radius: 20px;
+      color: rgba(255,255,255,0.7);
+    }
+
+    .header h1 {
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .header h1 span { color: #A5B4FC; }
+
+    .header .subtitle {
+      font-size: 15px;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 36px;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .stat-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 14px;
+      padding: 18px 20px;
+    }
+
+    .stat-value {
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 5px;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.45);
+      font-weight: 600;
+    }
+
+    .stat-sub {
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+      margin-top: 2px;
+    }
+
+    /* ── Navigation ───────────────────────────────────────────── */
+    .toc-bar {
+      background: #fff;
+      border-bottom: 1px solid #E2E8F0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+
+    .toc-inner {
+      max-width: 1020px;
+      margin: 0 auto;
+      display: flex;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .toc-inner::-webkit-scrollbar { display: none; }
+
+    .toc-inner a {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 13px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #64748B;
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .toc-inner a:hover { color: #1E293B; }
+
+    .toc-pip {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .toc-count {
+      font-size: 10px;
+      background: #F1F5F9;
+      border-radius: 10px;
+      padding: 1px 6px;
+      color: #94A3B8;
+      font-weight: 700;
+    }
+
+    /* ── Main layout ──────────────────────────────────────────── */
+    .main {
+      max-width: 1020px;
+      margin: 0 auto;
+      padding: 40px 24px 60px;
+    }
+
+    /* ── Category section ─────────────────────────────────────── */
+    .category { margin-bottom: 52px; }
+
+    .category-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .cat-icon {
+      width: 40px; height: 40px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .cat-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: #0F172A;
+      letter-spacing: -0.01em;
+    }
+
+    .cat-count {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 20px;
+      background: #F1F5F9;
+      color: #64748B;
+    }
+
+    .cat-mrr {
+      margin-left: auto;
+      font-size: 12px;
+      font-weight: 700;
+      color: #059669;
+      background: #ECFDF5;
+      padding: 3px 10px;
+      border-radius: 20px;
+      border: 1px solid #A7F3D0;
+    }
+
+    .category-divider {
+      height: 2px;
+      background: linear-gradient(90deg, currentColor 0%, transparent 100%);
+      opacity: 0.15;
+      margin-bottom: 14px;
+      border-radius: 2px;
+    }
+
+    /* ── Request card ─────────────────────────────────────────── */
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      border: 1px solid #E2E8F0;
+      margin-bottom: 10px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
+      transition: box-shadow 0.15s;
+    }
+
+    .card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+
+    .card-body {
+      padding: 18px 20px 14px;
+      border-left: 4px solid;
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .card-meta { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+
+    .customer {
+      font-size: 13px;
+      font-weight: 700;
+      color: #0F172A;
+    }
+
+    .badge {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 20px;
+    }
+
+    .badge-mrr {
+      background: #ECFDF5;
+      color: #059669;
+      border: 1px solid #A7F3D0;
+    }
+
+    .badge-agency {
+      background: #EFF6FF;
+      color: #1D4ED8;
+      border: 1px solid #BFDBFE;
+    }
+
+    .badge-trial {
+      background: #FFF7ED;
+      color: #C2410C;
+      border: 1px solid #FED7AA;
+    }
+
+    .badge-backlog {
+      background: #FEFCE8;
+      color: #92400E;
+      border: 1px solid #FDE68A;
+    }
+
+    .badge-redirected {
+      background: #F0FDF4;
+      color: #166534;
+      border: 1px solid #86EFAC;
+    }
+
+    .card-date {
+      font-size: 11px;
+      color: #94A3B8;
+      white-space: nowrap;
+      padding-top: 2px;
+    }
+
+    .card-text {
+      font-size: 13.5px;
+      color: #334155;
+      line-height: 1.65;
+    }
+
+    .card-text ul {
+      margin: 6px 0 0 18px;
+    }
+
+    .card-text li { margin-bottom: 2px; }
+
+    .card-reporter {
+      margin-top: 10px;
+      font-size: 11px;
+      color: #94A3B8;
+    }
+
+    .card-reporter strong { color: #64748B; font-weight: 600; }
+
+    /* ── Thread section ───────────────────────────────────────── */
+    .thread-wrap {
+      border-top: 1px solid #F1F5F9;
+    }
+
+    .thread-btn {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      width: 100%;
+      padding: 9px 20px;
+      background: #FAFAFA;
+      border: none;
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 700;
+      color: #6366F1;
+      text-align: left;
+      transition: background 0.1s;
+    }
+
+    .thread-btn:hover { background: #F1F5F9; }
+
+    .thread-icon {
+      font-size: 13px;
+      transition: transform 0.2s;
+    }
+
+    .thread-icon.open { transform: rotate(90deg); }
+
+    .thread-replies { padding: 4px 20px 14px; background: #FAFAFA; display: none; }
+    .thread-replies.visible { display: block; }
+
+    .reply {
+      display: flex;
+      gap: 10px;
+      padding: 9px 0;
+      border-top: 1px solid #F1F5F9;
+    }
+
+    .reply:first-child { border-top: none; padding-top: 4px; }
+
+    .avatar {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 800;
+      color: #fff;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .reply-body { flex: 1; min-width: 0; }
+
+    .reply-header {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 2px;
+    }
+
+    .reply-name {
+      font-size: 12px;
+      font-weight: 700;
+      color: #1E293B;
+    }
+
+    .reply-time { font-size: 11px; color: #94A3B8; }
+
+    .reply-text {
+      font-size: 13px;
+      color: #475569;
+      line-height: 1.55;
+    }
+
+    .reaction {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      margin-top: 4px;
+      font-size: 12px;
+      background: #F1F5F9;
+      padding: 2px 7px;
+      border-radius: 12px;
+      color: #475569;
+    }
+
+    /* ── Footer ───────────────────────────────────────────────── */
+    footer {
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 12px;
+      color: #94A3B8;
+      border-top: 1px solid #E2E8F0;
+      background: #fff;
+    }
+
+    footer a { color: #6366F1; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<header class="header">
+  <div class="header-inner">
+    <div class="header-top">
+      <div class="brand">
+        <div class="brand-dot"></div>
+        Reply.io · Product Team
+      </div>
+      <div class="header-channel">#features-requests</div>
+    </div>
+
+    <h1>Feature Requests<br><span>May 2026</span></h1>
+    <p class="subtitle">Monthly digest — all requests logged in Slack, grouped by category</p>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-value">17</div>
+        <div class="stat-label">Total Requests</div>
+        <div class="stat-sub">From 13 unique customers</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">10</div>
+        <div class="stat-label">Categories</div>
+        <div class="stat-sub">LinkedIn leads with 4</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">$6K+</div>
+        <div class="stat-label">Known MRR</div>
+        <div class="stat-sub">Across identified accounts</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">4</div>
+        <div class="stat-label">Active Threads</div>
+        <div class="stat-sub">12 thread replies total</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════ TOC NAV ═══════════════ -->
+<nav class="toc-bar">
+  <div class="toc-inner">
+    <a href="#linkedin" style="--c:var(--c-linkedin)">
+      <span class="toc-pip" style="background:var(--c-linkedin)"></span>
+      LinkedIn Automation <span class="toc-count">4</span>
+    </a>
+    <a href="#crm" style="--c:var(--c-crm)">
+      <span class="toc-pip" style="background:var(--c-crm)"></span>
+      CRM Integration <span class="toc-count">2</span>
+    </a>
+    <a href="#ai" style="--c:var(--c-ai)">
+      <span class="toc-pip" style="background:var(--c-ai)"></span>
+      AI Features <span class="toc-count">2</span>
+    </a>
+    <a href="#analytics" style="--c:var(--c-analytics)">
+      <span class="toc-pip" style="background:var(--c-analytics)"></span>
+      Analytics &amp; Reporting <span class="toc-count">2</span>
+    </a>
+    <a href="#sequences" style="--c:var(--c-sequences)">
+      <span class="toc-pip" style="background:var(--c-sequences)"></span>
+      Sequences &amp; Email <span class="toc-count">2</span>
+    </a>
+    <a href="#account" style="--c:var(--c-account)">
+      <span class="toc-pip" style="background:var(--c-account)"></span>
+      Account Management <span class="toc-count">1</span>
+    </a>
+    <a href="#inbox" style="--c:var(--c-inbox)">
+      <span class="toc-pip" style="background:var(--c-inbox)"></span>
+      Inbox <span class="toc-count">1</span>
+    </a>
+    <a href="#contacts" style="--c:var(--c-contacts)">
+      <span class="toc-pip" style="background:var(--c-contacts)"></span>
+      Contact Management <span class="toc-count">1</span>
+    </a>
+    <a href="#scheduling" style="--c:var(--c-scheduling)">
+      <span class="toc-pip" style="background:var(--c-scheduling)"></span>
+      Scheduling <span class="toc-count">1</span>
+    </a>
+    <a href="#api" style="--c:var(--c-api)">
+      <span class="toc-pip" style="background:var(--c-api)"></span>
+      API &amp; Webhooks <span class="toc-count">1</span>
+    </a>
+  </div>
+</nav>
+
+<!-- ═══════════════ MAIN ═══════════════ -->
+<main class="main">
+
+  <!-- ══ 1. LINKEDIN AUTOMATION ══ -->
+  <section class="category" id="linkedin">
+    <div class="category-header">
+      <div class="cat-icon" style="background:#EFF6FF">🔗</div>
+      <span class="cat-title">LinkedIn Automation</span>
+      <span class="cat-count">4 requests</span>
+      <span class="cat-mrr">$2,508 MRR</span>
+    </div>
+    <div class="category-divider" style="color:var(--c-linkedin)"></div>
+
+    <!-- Card 1 -->
+    <div class="card">
+      <div class="card-body" style="border-left-color:var(--c-linkedin)">
+        <div class="card-top">
+          <div class="card-meta">
+            <span class="customer">sales@p-product.com</span>
+            <span class="badge badge-mrr">$1,289 MRR</span>
+          </div>
+          <span class="card-date">May 15, 2026</span>
+        </div>
+        <div class="card-text">
+          <strong>Centralized LinkedIn connection request monitoring per account.</strong> User manages multiple campaigns with rotating LinkedIn accounts and needs a centralized view to monitor pending/queued connection requests per LinkedIn account. Current workaround via filters is too manual and hard to scale — user must aggregate counts across campaigns manually to balance account load efficiently.
+        </div>
+        <div class="card-reporter">Reported by <strong>Olena Kovalchuk</strong></div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card">
+      <div class="card-body" style="border-left-color:var(--c-linkedin)">
+        <div class="card-top">
+          <div class="card-meta">
+            <span class="customer">german@therevenuelabs.com</span>
+            <span class="badge badge-mrr">$500 MRR</span>
+          </div>
+          <span class="card-date">May 6, 2026</span>
+        </div>
+        <div class="card-text">
+          <strong>InMail step fallback logic + proactive notifications when credits are exhausted.</strong> Contacts get stuck in InMail steps when there are no available credits — the system does not skip the step or move contacts forward automatically. Two key gaps identified:
+          <ul>
+            <li>No proactive notification when InMail steps cannot be executed</li>
+            <li>No fallback or auto-skip logic when a step is blocked</li>
+          </ul>
+          This was confirmed in a separate thread by a second user, so it is not an isolated case.
+        </div>
+        <div class="card-reporter">Reported by <strong>Olena Kovalchuk</strong></div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card">
+      <div class="card-body" style="border-left-color:var(--c-linkedin)">
+        <div class="card-top">
+          <div class="card-meta">
+            <span class="customer">SalesAR</span>
+            <span class="badge badge-agency">Agency · $630 MRR</span>
+          </div>
+          <span class="card-date">May 4, 2026</span>
+        </div>
+        <div class="card-text">
+          <strong>Multiple contact distribution methods across LinkedIn sender profiles.</strong> Customer is considering migrating from Grinfi.io to Reply.io for LinkedIn automation and described this as a "nice to have." Requested distribution options:
+          <ul>
+            <li>Rotate to a new sender profile</li>
+            <li>Prioritize profiles with prior engagement</li>
+            <li>Fair balance rotation</li>
+            <li>Random rotation</li>
+          </ul>
+          Additional suggestion from reporter: re-assign contacts that haven't started a sequence yet to LinkedIn profiles that still have sending capacity and no issues with limits.
+        </div>
+        <div class="card-reporter">Reported by <strong>Max</strong></div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card">
+      <div class="card-body" style="border-left-color:var(--c-linkedin)">
+        <div class="card-top">
+          <div class="card-meta">
+            <span class="customer">luiza@gradienthealth.io</span>
+            <span class="badge badge-mrr">$89 MRR</span>
+          </div>
+          <span class="card-date">May 11, 2026</span>
+        </div>
+        <div class="card-text">
+          <strong>Clearer LinkedIn account disconnection indicators.</strong> It is not obvious enough when a LinkedIn account is disconnected. Additional suggestion from reporter: display LinkedIn account status (inactive/disconnected or insufficient InMail credits) directly in sequence settings, so users understand why LinkedIn steps are not executing or why InMails aren't being sent — via a pop-up, warning banner, or notification.
+        </div>
+        <div class="card-reporter">Reported by <strong>Artem Savchuk</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 2. CRM INTEGRATION ══ -->
+  <section class="category" id="crm">
+    <div class="category-header">
+      <div class="cat-icon" style="background:#FFF7ED">🔄</div>
+      <span class="cat-title">CRM Integration</span>
+      <span class="cat-count">2 requests</span>
+      <span class="cat-mrr">$408 MRR</span>
+    </div>
+    <div class="category-divider" style="color:var(--c-crm)"></div>
+
+    <!-- Card 1 -->
+    <div class="card">
+      <div class="card-body" style="border-left-color:var(--c-crm)">
+        <div class="card-top">
+          <div class="card-meta">
+            <span class="customer">loriol@toogoodtogo.com</span>
+            <span class="badge badge-mrr">$229 MRR</span>
+          </div>
+          <span class="card-date">May 18, 2026</span>
+        </div>
+        <div class="card-text">
+          <strong>Hybrid Salesforce sync matching by Email and Lead/Contact ID simultaneously.</strong> Support matching by both email address and Lead/Contact ID at the same time so each Reply contact can be reliably linked to the correct Salesforce record, even when duplicate email addresses exist.
+        </div>
+        <div class="card-reporter">Reported by <strong>Artem Savchuk</strong></div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card">
+      <div class="card-body" style="border-left-color:var(--c-crm)">
+        <div class="card-top">
+          <div class="card-meta">
+            <span class="customer">fkabir@ascend-co.com</span>
+            <span class="badge badge-mrr">$179 MRR</span>
+          </div>
+          <span class="card-date">May 18, 2026</span>
+        </div>
+        <div class="card-text">
+          <strong>HubSpot dropdown sync — use Label instead of Internal Name.</strong> When syncing dropdown field values from HubSpot, Reply currently maps from the Internal Name field. The user wants to sync from the Label field instead, so that the human-readable display names appear in Reply rather than the raw internal identifiers.
+        </div>
+        <div class="card-reporter">Reported by <strong>Tetiana Lobko</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 3. AI FEATURES ══ -->
+  <section class="category" id="ai">
+    <div class="category-header">
+      <div class="cat-icon" style="background:#F5F3FF">✨</div>
+      <span class="cat-title">AI Features</span>
+      <span class="cat-count">2 requests</span>
+      <span class="cat-mrr">$1,030 MRR</span>
+    </div>
+    <div class="category-divider" style="color:var(--c-ai)"></div>
+
+    <!-- Card 1 -->
+    <div class="card">
+      <div class="card-body" style="border-left-color:var(--c-ai)">
+        <div class="card-top">
+          <div class="card-meta">
+            <span class="customer">smm@mirigos.com</span>
+            <span class="badge badge-mrr">$530 MRR</span>
+          </div>
+          <span class="card-date">May 14, 2026</span>
+        </div>
+        <div class="card-text">
+          <strong>Bring-your-own AI model via API for copywriting.</strong> User wants to connect their own AI model through an API key to use it as the copywriting engine within Reply, instead of being limited to the platform's built-in AI options.
+        </div>
+        <div class="card-reporter">Reported by <strong>Olena Kovalchuk</strong></div>
+      </div>
+    </div>
+
+    <!-- Card 2 — with thread -->
+    <div class="card">
+      <div class="card-body" style="border-left-color:var(--c-ai)">
+        <div class="card-top">
+          <div class="card-meta">
+            <span class="customer">kamile@s-e.lt</span>
+            <span class="badge badge-mrr">$500 MRR</span>
+            <span class="badge badge-redirected">✓ In Progress</span>
+          </div>
+          <span class="card-date">May 13, 2026</span>
+        </div>
+        <div class="card-text">
+          <strong>Lithuanian language support for AI voice messages.</strong> Customer wants Lithuanian available as an AI voice message language option. Currently not supported in the platform.
+        </div>
+        <div class="card-reporter">Reported by <strong>Helen Burko</strong></div>
+      </div>
+      <div class="thread-wrap">
+        <button class="thread-btn" onclick="toggleThread(this)">
+          <span class="thread-icon">▶</span>
+          4 replies in thread
+        </button>
+        <div class="thread-replies">
+          <div class="reply">
+            <div class="avatar" style="background:linear-gradient(135deg,#8B5CF6,#6366F1)">LM</div>
+            <div class="reply-body">
+              <div class="reply-header">
+                <span class="reply-name">Lesya Magas</span>
+                <span class="reply-time">May 13, 16:45</span>
+              </div>
+              <div class="reply-text">@Inna Perlovska can we?</div>
+            </div>
+          </div>
+          <div class="reply">
+            <div class="avatar" style="background:linear-gradient(135deg,#10B981,#059669)">IP</div>
+            <div class="reply-body">
+              <div class="reply-header">
+                <span class="reply-name">Inna Perlovska</span>
+                <span class="reply-time">May 13, 17:06</span>
+              </div>
+              <div class="reply-text">I'll check</div>
+              <div class="reaction">🙌 1</div>
+            </div>
+          </div>
+          <div class="reply">
+            <div class="avatar" style="background:linear-gradient(135deg,#10B981,#059669)">IP</div>
+            <div class="reply-body">
+              <div class="reply-header">
+                <span class="reply-name">Inna Perlovska</span>
+                <span class="reply-time">May 13, 19:47</span>
+              </div>
+              <div class="reply-text">Right now we cannot add Lithuanian.</div>
+            </div>
+          </div>
+          <div class="reply">
+            <div class="avatar" style="background:linear-gradient(135deg,#10B981,#059669)">IP</div>
+            <div class="reply-body">
+              <div class="reply-header">
+                <span class="reply-name">Inna Perlovska</span>
+                <span class="reply-time">May 13, 19:48</span>
+              </div>
+              <div class="reply-text">But I will think about possible ways to extend the list of supported languages in the future.</div>
+              <div class="reaction">🫡 1</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 4. ANALYTICS & REPORTING ══ -->
+  <section class="category" id="analytics">
+    <div class="category-header">
+      <div class="cat-icon" style="background:#ECFDF5">📊</div>
+      <span class="cat-title">Analytics &amp; Reporting</span>
+      <span class="cat-count">2 requests</span>
+      <span class="cat-mrr">$499+ MRR</span>
+    </div>
+    <div class="category-divider" style="color:var(--c-analytics)"></div>
+
+    <!-- Card 1 -->
+    <div class="card">
+      <div class="card-body" style="border-left-color:var(--c-analytics)">
+        <div class="card-top">
+          <div class="card-meta">
+            <span class="customer">sadler@oneeagleadvisory.com</span>
+            <span class="badge badge-mrr">$499 MRR</span>
+          </div>
+          <span class="card-date">May 18, 2026</span>
+        </div>
+        <div class="card-text">
+          <strong>Bulk export or API for daily mailbox sending stats.</strong> User wants to automate daily checks on email account health and sending volumes. Currently they must manually review each account individually. They want either a daily bulk data export or an API endpoint to pull this data programmatically — to detect errors and verify that accounts are sending the correct volume without manual review.
+        </div>
+        <div class="card-reporter">Reported by <strong>Tetiana Lobko</strong></div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card">
+      <div class="card-body" style="border-left-color:var(--c-analytics)">
+        <div class="card-top">
+          <div class="card-meta">
+            <span class="customer">Peoplelinx</span>
+          </div>
+          <span class="card-date">May 4, 2026</span>
+        </div>
+        <div class="card-text">
+          <strong>Separate columns for Reply Count and Reply Rate in the Email Report Stats.</strong> Currently, users can sort by replies or switch to percentage view inside the Stats section, but both values are not shown as separate columns simultaneously. The request is to display Replies and Reply Rate as distinct side-by-side columns — mirroring the way Clicks and CTR are already presented — to make reporting and comparison easier.
+        </div>
+        <div class="card-reporter">Reported by <strong>Maria Obolashvili</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 5. SEQUENCES & EMAIL ══ -->
+  <section class="category" id="sequences">
+    <div class="category-header">
+      <div class="cat-icon" style="background:#FDF2F8">✉️</div>
+      <span class="cat-title">Sequences &amp; Email</span>
+      <span class="cat-count">2 requests</span>
+      <span class="cat-mrr">$837 MRR</span>
+    </div>
+    <div class="category-divider" style="color:var(--c-sequences)"></div>
+
+    <!-- Card 1 — with thread -->
+    <div class="card">
+      <div class="card-body" style="border-left-color:var(--c-sequences)">
+        <div class="card-top">
+          <div class="card-meta">
+            <span class="customer">o.nikitin@ability.ai</span>
+            <span class="badge badge-mrr">$337 MRR</span>
+          </div>
+          <span class="card-date">May 15, 2026</span>
+        </div>
+        <div class="card-text">
+          <strong>Support variables inside custom fields.</strong> User uploads CSV files containing full email templates as custom fields per contact. Those templates include <code style="background:#F1F5F9;padding:1px 5px;border-radius:4px;font-size:12px">{{first_name}}</code> and <code style="background:#F1F5F9;padding:1px 5px;border-radius:4px;font-size:12px">{{company}}</code> variables, but the system currently does not resolve these variables when the content comes from a custom field — showing them as "Missing data" instead.
+        </div>
+        <div class="card-reporter">Reported by <strong>Iryna</strong></div>
+      </div>
+      <div class="thread-wrap">
+        <button class="thread-btn" onclick="toggleThread(this)">
+          <span class="thread-icon">▶</span>
+          5 replies in thread
+        </button>
+        <div class="thread-replies">
+          <div class="reply">
+            <div class="avatar" style="background:linear-gradient(135deg,#8B5CF6,#6366F1)">LM</div>
+            <div class="reply-body">
+              <div class="reply-header">
+                <span class="reply-name">Lesya Magas</span>
+                <span class="reply-time">May 17, 16:56</span>
+              </div>
+              <div class="reply-text">AI custom fields do that!</div>
+            </div>
+          </div>
+          <div class="reply">
+            <div class="avatar" style="background:linear-gradient(135deg,#EC4899,#DB2777)">IR</div>
+            <div class="reply-body">
+              <div class="reply-header">
+                <span class="reply-name">Iryna</span>
+                <span class="reply-time">May 17, 18:09</span>
+              </div>
+              <div class="reply-text">@Lesya — for context, the user uploads a CSV with email templates as a custom field for each contact. He has First name and Company variables in these custom fields, but the system shows them as Missing data. Not sure how an AI custom field would work here — should the user convert their regular fields to AI custom fields?</div>
+            </div>
+          </div>
+          <div class="reply">
+            <div class="avatar" style="background:linear-gradient(135deg,#8B5CF6,#6366F1)">LM</div>
+            <div class="reply-body">
+              <div class="reply-header">
+                <span class="reply-name">Lesya Magas</span>
+                <span class="reply-time">May 18, 21:01</span>
+              </div>
+              <div class="reply-text">That's a weird flow — why don't they use email templates?</div>
+            </div>
+          </div>
+          <div class="reply">
+            <div class="avatar" style="background:linear-gradient(135deg,#8B5CF6,#6366F1)">LM</div>
+            <div class="reply-body">
+              <div class="reply-header">
+                <span class="reply-name">Lesya Magas</span>
+                <span class="reply-time">May 18, 21:01</span>
+              </div>
+              <div class="reply-text">Why don't they create a template and select it in the sequence?</div>
+            </div>
+          </div>
+          <div class="reply">
+            <div class="avatar" style="background:linear-gradient(135deg,#EC4899,#DB2777)">IR</div>
+            <div class="reply-body">
+              <div class="reply-header">
+                <span class="reply-name">Iryna</span>
+                <span class="reply-time">May 18, 21:34</span>
+              </div>
+              <div class="reply-text">Maybe they have personalized templates for each client — not sure.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card">
+      <div class="card-body" style="border-left-color:var(--c-sequences)">
+        <div class="card-top">
+          <div class="card-meta">
+            <span class="customer">david@coastalwipers.com</span>
+            <span class="badge badge-mrr">$500 MRR</span>
+          </div>
+          <span class="card-date">May 13, 2026</span>
+        </div>
+        <div class="card-text">
+          <strong>Save / pre-save a default CTA per sequence.</strong> When creating sequences for different audiences, the CTA often stays the same. The user would like to pre-save a CTA so it doesn't need to be re-entered manually each time. Not marked as urgent by the customer.
+        </div>
+        <div class="card-reporter">Reported by <strong>Mariia Liaskovets</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 6. ACCOUNT MANAGEMENT ══ -->
+  <section class="category" id="account">
+    <div class="category-header">
+      <div class="cat-icon" style="background:#F8FAFC">⚙️</div>
+      <span class="cat-title">Account &amp; Mailbox Management</span>
+      <span class="cat-count">1 request</span>
+      <span class="cat-mrr">$696 MRR</span>
+    </div>
+    <div class="category-divider" style="color:var(--c-account)"></div>
+
+    <!-- Card 1 — with thread -->
+    <div class="card">
+      <div class="card-body" style="border-left-color:var(--c-account)">
+        <div class="card-top">
+          <div class="card-meta">
+            <span class="customer">admin@salesar.io</span>
+            <span class="badge badge-agency">Agency · $696 MRR</span>
+            <span class="badge badge-backlog">📌 Added to Backlog</span>
+          </div>
+          <span class="card-date">May 13, 2026</span>
+        </div>
+        <div class="card-text">
+          <strong>Change ownership of connected mailboxes.</strong> Ability to reassign a connected mailbox from one user/owner to another within the account, without needing to disconnect and reconnect it.
+        </div>
+        <div class="card-reporter">Reported by <strong>Daniil Reznichenko</strong></div>
+      </div>
+      <div class="thread-wrap">
+        <button class="thread-btn" onclick="toggleThread(this)">
+          <span class="thread-icon">▶</span>
+          1 reply in thread
+        </button>
+        <div class="thread-replies">
+          <div class="reply">
+            <div class="avatar" style="background:linear-gradient(135deg,#8B5CF6,#6366F1)">LM</div>
+            <div class="reply-body">
+              <div class="reply-header">
+                <span class="reply-name">Lesya Magas</span>
+                <span class="reply-time">May 13, 16:46</span>
+              </div>
+              <div class="reply-text">@Inna Perlovska — let's take this one in the backlog.</div>
+              <div class="reaction">✍️ 1</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 7. INBOX ══ -->
+  <section class="category" id="inbox">
+    <div class="category-header">
+      <div class="cat-icon" style="background:#FFFBEB">💬</div>
+      <span class="cat-title">Inbox</span>
+      <span class="cat-count">1 request</span>
+    </div>
+    <div class="category-divider" style="color:var(--c-inbox)"></div>
+
+    <div class="card">
+      <div class="card-body" style="border-left-color:var(--c-inbox)">
+        <div class="card-top">
+          <div class="card-meta">
+            <span class="customer">Peoplelinx</span>
+          </div>
+          <span class="card-date">May 14, 2026</span>
+        </div>
+        <div class="card-text">
+          <strong>Edit or delete saved canned responses.</strong> Users currently cannot modify or remove canned responses once they have been saved. The request is to add edit and delete actions to manage the saved canned response library.
+        </div>
+        <div class="card-reporter">Reported by <strong>Olena Kovalchuk</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 8. CONTACT MANAGEMENT ══ -->
+  <section class="category" id="contacts">
+    <div class="category-header">
+      <div class="cat-icon" style="background:#ECFEFF">👥</div>
+      <span class="cat-title">Contact Management</span>
+      <span class="cat-count">1 request</span>
+    </div>
+    <div class="category-divider" style="color:var(--c-contacts)"></div>
+
+    <div class="card">
+      <div class="card-body" style="border-left-color:var(--c-contacts)">
+        <div class="card-top">
+          <div class="card-meta">
+            <span class="customer">jerry@revenuevelocity.group</span>
+            <span class="badge badge-trial">Trial</span>
+          </div>
+          <span class="card-date">May 5, 2026</span>
+        </div>
+        <div class="card-text">
+          <strong>Partial field update on CSV import — preserve unmapped fields.</strong> When uploading a CSV to update only one field (e.g. phone number), the current behavior has two problems: using the "update" option with a partially mapped CSV clears unmapped fields; using "skip" leaves the existing contact untouched entirely. The request is for a third option — update only the explicitly mapped fields while leaving all other existing contact data intact.
+        </div>
+        <div class="card-reporter">Reported by <strong>Maria Obolashvili</strong> · <span style="font-size:11px">👍 Community reaction: 1</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 9. SCHEDULING ══ -->
+  <section class="category" id="scheduling">
+    <div class="category-header">
+      <div class="cat-icon" style="background:#EEF2FF">📅</div>
+      <span class="cat-title">Scheduling</span>
+      <span class="cat-count">1 request</span>
+      <span class="cat-mrr">$59 MRR</span>
+    </div>
+    <div class="category-divider" style="color:var(--c-scheduling)"></div>
+
+    <div class="card">
+      <div class="card-body" style="border-left-color:var(--c-scheduling)">
+        <div class="card-top">
+          <div class="card-meta">
+            <span class="customer">jerry@revenuevelocity.group</span>
+            <span class="badge badge-mrr">$59 MRR</span>
+          </div>
+          <span class="card-date">May 13, 2026</span>
+        </div>
+        <div class="card-text">
+          <strong>Copy time blocks from one day to other days when setting up schedules.</strong> When configuring sending schedules, users must re-enter the same time blocks for each day manually. A "copy to other days" or "apply to all" action would save significant time when the schedule is consistent across weekdays.
+        </div>
+        <div class="card-reporter">Reported by <strong>Maria Obolashvili</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 10. API & WEBHOOKS ══ -->
+  <section class="category" id="api">
+    <div class="category-header">
+      <div class="cat-icon" style="background:#F5F3FF">🔌</div>
+      <span class="cat-title">API &amp; Webhooks</span>
+      <span class="cat-count">1 request</span>
+    </div>
+    <div class="category-divider" style="color:var(--c-api)"></div>
+
+    <!-- Card 1 — with thread -->
+    <div class="card">
+      <div class="card-body" style="border-left-color:var(--c-api)">
+        <div class="card-top">
+          <div class="card-meta">
+            <span class="customer">Sojern</span>
+            <span class="badge badge-redirected">→ API Community</span>
+          </div>
+          <span class="card-date">May 12, 2026</span>
+        </div>
+        <div class="card-text">
+          <strong>Add sequence_id, sequence_name, and email from fields to all webhook events.</strong> To improve join reliability across datasets, the customer requests that these fields be consistently available and populated in all webhook events (email sent, email opened, link clicked, etc.):
+          <ul>
+            <li><code style="background:#F1F5F9;padding:1px 5px;border-radius:4px;font-size:12px">sequence_id</code></li>
+            <li><code style="background:#F1F5F9;padding:1px 5px;border-radius:4px;font-size:12px">sequence_name</code></li>
+            <li><code style="background:#F1F5F9;padding:1px 5px;border-radius:4px;font-size:12px">email_from</code></li>
+          </ul>
+        </div>
+        <div class="card-reporter">Reported by <strong>Iryna</strong></div>
+      </div>
+      <div class="thread-wrap">
+        <button class="thread-btn" onclick="toggleThread(this)">
+          <span class="thread-icon">▶</span>
+          2 replies in thread
+        </button>
+        <div class="thread-replies">
+          <div class="reply">
+            <div class="avatar" style="background:linear-gradient(135deg,#F59E0B,#D97706)">MX</div>
+            <div class="reply-body">
+              <div class="reply-header">
+                <span class="reply-name">Max</span>
+                <span class="reply-time">May 12, 15:11</span>
+              </div>
+              <div class="reply-text">Hey Iryna — I think it's worth posting any API-related requests/questions in our new API Community: replyio-api-community.slack.com</div>
+            </div>
+          </div>
+          <div class="reply">
+            <div class="avatar" style="background:linear-gradient(135deg,#EC4899,#DB2777)">IR</div>
+            <div class="reply-body">
+              <div class="reply-header">
+                <span class="reply-name">Iryna</span>
+                <span class="reply-time">May 12, 15:19</span>
+              </div>
+              <div class="reply-text">Will do, thanks!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  Generated from <strong>#features-requests</strong> · May 1–31, 2026 · 17 requests · Reply.io Product Team
+</footer>
+
+<script>
+  function toggleThread(btn) {
+    const replies = btn.nextElementSibling;
+    const icon = btn.querySelector('.thread-icon');
+    const isVisible = replies.classList.contains('visible');
+    replies.classList.toggle('visible', !isVisible);
+    icon.classList.toggle('open', !isVisible);
+    btn.innerHTML = btn.innerHTML.replace(
+      isVisible ? '▼' : '▶',
+      isVisible ? '▶' : '▼'
+    );
+  }
+</script>
+
+</body>
+</html>
