@@ -960,9 +960,52 @@ const JIRA_FUNC_MAP = {
   'Billing & Plans':       'Billing',
 };
 
+const PRODUCT_KNOWLEDGE = {
+  'LinkedIn Automation':
+    'Reply has a full LinkedIn step engine (connection requests, InMails, messages, voice messages, profile views). ' +
+    'Recently shipped: InMail credit exhaustion and SN-disconnection notifications, a dedicated webhook for LinkedIn account alerts, ' +
+    'InMail accepted/rejected sequence conditions, default delays for connection request and InMail-accepted steps, ' +
+    'declined InMail visibility in Inbox, and LI message templates for steps.',
+  'CRM Integration':
+    'Reply integrates with Salesforce, HubSpot, and Pipedrive for bidirectional contact sync. ' +
+    'Calendly integration (connection + reply-handling) recently shipped. ' +
+    'Trigger conditions including date-field comparisons are available in the automation builder.',
+  'AI Features':
+    'Reply has AI SDR (auto-generates and manages multi-channel sequences), AI Custom Fields (enrich contacts via custom prompts), ' +
+    'custom personalization points, and the ability to regenerate AI SDR sequences with a different channel mix. ' +
+    'AI SDR attachment support and quarterly/semi-annual billing for AI SDR recently shipped.',
+  'Sequences & Email':
+    'Reply has a full sequence builder with email, LinkedIn, call, and task steps. ' +
+    'Recently shipped: Copy Step, ramp-up delay controls, subject-line threading placement, ' +
+    'per-email-account filtering in Sequences and Reports, and email connectivity error notifications.',
+  'Analytics & Reporting':
+    'Reply has sequence stats with step-level breakdown, stats CSV export (with Title and Account name), ' +
+    'an Active contacts report with Workspace name, and open/click tracking event logs. ' +
+    'Smart filter custom date ranges recently shipped.',
+  'Inbox':
+    'Reply Inbox has smart filters with AND/OR condition logic, custom date ranges for Last touch and Added On, ' +
+    'task time filters with new time-range options, and a canned responses library.',
+  'API & Webhooks':
+    'Reply has a v3 Webhooks page for managing subscriptions. Webhooks exist for LinkedIn alerts ' +
+    '(SN disconnected, no InMail credits, weekly limit reached). ' +
+    'Branded link management and DNS health checks are also available in the platform.',
+  'Contact Management':
+    'Reply supports CSV import with auto-mapped LinkedIn fields, AI Custom Fields for prospect enrichment, ' +
+    'and a redesigned contact sources hub with AI web search and competitor follower import (in Beta).',
+  'Scheduling':
+    'Reply has per-sequence sending schedules with configurable time blocks. ' +
+    'Custom holidays and Regional Holiday Packs with per-schedule holiday settings recently shipped.',
+  'Security & Auth':
+    'Reply has a role and permission model with workspace-level controls, agency workspace management, ' +
+    'and organisation-level member management (invite, remove, transfer).',
+  'Billing & Plans':
+    'Reply supports monthly, quarterly, and semi-annual billing cycles. ' +
+    'Email volume plans with mailbox limits and AI SDR trial plans are available.',
+};
+
 let jiraOpenBtn = null;
 
-function buildPMDesc(rawDesc, meta) {
+function buildPMDesc(rawDesc, meta, category) {
   const evidence = [];
   if (meta.customer) evidence.push(`- Customer: ${meta.customer}`);
   if (meta.mrr && meta.mrr !== '—') evidence.push(`- MRR: ${meta.mrr}`);
@@ -976,6 +1019,11 @@ function buildPMDesc(rawDesc, meta) {
     meta.customer || null
   ].filter(Boolean).join(' · ');
 
+  const productCtx = PRODUCT_KNOWLEDGE[category] || '';
+  const proposedSolution = productCtx
+    ? `${productCtx}\n\n[Describe the specific extension needed — what UI, API, or logic change closes this gap]`
+    : '(What needs to be built — high level)';
+
   return [
     '## Problem',
     rawDesc || '(describe what the customer cannot do today)',
@@ -984,7 +1032,7 @@ function buildPMDesc(rawDesc, meta) {
     why || '(MRR at stake, customers affected)',
     '',
     '## Proposed solution',
-    '(What needs to be built — high level)',
+    proposedSolution,
     '',
     '## Customer evidence',
     evidence.join('\n')
@@ -993,13 +1041,16 @@ function buildPMDesc(rawDesc, meta) {
 
 function openJira(btn) {
   jiraOpenBtn = btn;
-  const card    = btn.closest('.card');
-  const summary = btn.dataset.summary || card?.querySelector('.ctitle')?.textContent?.trim() || '';
-  const rawDesc = btn.dataset.description || card?.querySelector('.cdesc')?.textContent?.trim() || '';
-  const meta    = cardMeta(btn);
+  const card     = btn.closest('.card');
+  const summary  = btn.dataset.summary || card?.querySelector('.ctitle')?.textContent?.trim() || '';
+  const rawDesc  = btn.dataset.description || card?.querySelector('.cdesc')?.textContent?.trim() || '';
+  const meta     = cardMeta(btn);
+  const category = btn.dataset.category
+                || card?.closest('.category')?.querySelector('.cat-name')?.textContent?.trim()
+                || '';
 
   document.getElementById('jm-summary').value = summary;
-  document.getElementById('jm-desc').value    = buildPMDesc(rawDesc, meta);
+  document.getElementById('jm-desc').value    = buildPMDesc(rawDesc, meta, category);
   document.getElementById('jira-overlay').classList.add('open');
 }
 
