@@ -76,40 +76,27 @@ a{color:inherit;text-decoration:none}
 .jb{background:#fff;border:1px solid #0052CC;color:#0052CC;border-radius:6px;padding:4px 11px;font-size:11px;font-weight:700;cursor:pointer;margin-left:auto;display:flex;align-items:center;gap:4px;letter-spacing:.2px}
 .jb:hover{background:#0052CC;color:#fff}
 
-.overlay{display:none;position:fixed;inset:0;background:rgba(15,10,46,.6);z-index:1000;align-items:center;justify-content:center}
-.overlay.open{display:flex}
-.modal{background:#fff;border-radius:14px;width:520px;max-width:92vw;padding:24px;box-shadow:0 24px 64px rgba(0,0,0,.25)}
-.mhd{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
-.mhd h3{font-size:15px;font-weight:700;color:#1E293B}
-.mcl{background:none;border:none;font-size:22px;color:#94A3B8;cursor:pointer;line-height:1;padding:0 2px}
-.mcl:hover{color:#1E293B}
-.modal label{display:block;font-size:10px;font-weight:700;color:#64748B;margin-bottom:4px;text-transform:uppercase;letter-spacing:.6px}
-.modal input,.modal textarea{width:100%;border:1px solid #E2E8F0;border-radius:6px;padding:8px 10px;font-size:13px;font-family:inherit;color:#1E293B;margin-bottom:12px;resize:none}
-.modal input:focus,.modal textarea:focus{outline:none;border-color:#6366F1;box-shadow:0 0 0 3px rgba(99,102,241,.1)}
-.modal textarea{height:90px}
-.mac{display:flex;gap:8px;margin-top:4px}
-.mac button{padding:8px 14px;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer}
-.bcopy{background:#F1F5F9;border:1px solid #E2E8F0;color:#475569}
-.bcopy:hover{background:#E2E8F0}
-.bopen{background:#0052CC;border:none;color:#fff;margin-left:auto;display:flex;align-items:center;gap:5px}
-.bopen:hover{background:#0747A6}
 
-/* ── Jira enhanced ── */
-.spinner{width:28px;height:28px;border:3px solid #E2E8F0;border-top-color:#6366F1;border-radius:50%;animation:spin .7s linear infinite;margin:0 auto}
-@keyframes spin{to{transform:rotate(360deg)}}
-.cog-btn{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#C7D2FE;border-radius:6px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer;margin-top:14px;display:inline-flex;align-items:center;gap:5px}
-.cog-btn:hover{background:rgba(255,255,255,.22);color:#fff}
-.dupe-row{display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid #FDE68A;font-size:12px}
-.dupe-row:last-child{border:none}
-.dupe-key{color:#0052CC;font-weight:700;min-width:80px;flex-shrink:0}
-.dupe-title{color:#475569;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.dupe-status{font-size:10px;background:#F1F5F9;padding:1px 7px;border-radius:8px;color:#64748B;flex-shrink:0}
-.jform-row{display:flex;gap:10px}
-.jform-row > div{flex:1}
-.modal select{width:100%;border:1px solid #E2E8F0;border-radius:6px;padding:8px 10px;font-size:13px;font-family:inherit;margin-bottom:12px;color:#1E293B;background:#fff}
-.modal select:focus{outline:none;border-color:#6366F1;box-shadow:0 0 0 3px rgba(99,102,241,.1)}
-#jira-overlay{cursor:default}
-.modal{cursor:default}
+/* ── Jira preview modal ── */
+.overlay{display:none;position:fixed;inset:0;background:rgba(15,10,46,.65);z-index:1000;align-items:center;justify-content:center;padding:16px}
+.overlay.open{display:flex}
+.jm-modal{background:#fff;border-radius:14px;width:680px;max-width:96vw;max-height:90vh;overflow-y:auto;padding:26px 30px;box-shadow:0 24px 64px rgba(0,0,0,.3);display:flex;flex-direction:column;gap:0}
+.mhd{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.mhd h3{font-size:15px;font-weight:700;color:#1E293B}
+.mcl{background:none;border:none;font-size:22px;color:#94A3B8;cursor:pointer;line-height:1;padding:0 4px}
+.mcl:hover{color:#1E293B}
+.mlab{display:block;font-size:10px;font-weight:700;color:#64748B;margin-bottom:5px;text-transform:uppercase;letter-spacing:.6px}
+.mlab span{font-size:10px;color:#94A3B8;font-weight:400;text-transform:none;letter-spacing:0}
+.jm-input{width:100%;border:1px solid #E2E8F0;border-radius:7px;padding:8px 11px;font-size:13px;font-family:inherit;color:#1E293B;margin-bottom:14px}
+.jm-input:focus{outline:none;border-color:#6366F1;box-shadow:0 0 0 3px rgba(99,102,241,.1)}
+.jm-textarea{width:100%;border:1px solid #E2E8F0;border-radius:7px;padding:10px 12px;font-size:12px;font-family:ui-monospace,'Cascadia Code','Fira Code',monospace;color:#334155;line-height:1.65;resize:vertical;height:220px;margin-bottom:14px}
+.jm-textarea:focus{outline:none;border-color:#6366F1;box-shadow:0 0 0 3px rgba(99,102,241,.1)}
+.mfooter{display:flex;gap:8px;margin-top:4px;padding-top:14px;border-top:1px solid #F1F5F9}
+.mbtn{padding:8px 16px;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;border:none;transition:background .15s}
+.mbtn-cancel{background:#F1F5F9;border:1px solid #E2E8F0;color:#64748B}
+.mbtn-cancel:hover{background:#E2E8F0}
+.mbtn-open{background:#0052CC;color:#fff;margin-left:auto;display:flex;align-items:center;gap:6px}
+.mbtn-open:hover{background:#0747A6}
 
 /* ── Month navigation ── */
 
@@ -146,7 +133,6 @@ a{color:inherit;text-decoration:none}
 <div class="header">
   <h1>Feature Requests &amp; Feedback &nbsp;·&nbsp; May 2026</h1>
   <p>#features-requests &nbsp;+&nbsp; #feedback &nbsp;·&nbsp; Generated May 20, 2026 &nbsp;·&nbsp; Statuses cross-checked against #updates</p>
-  <button class="cog-btn" onclick="openCreds()">⚙️ Jira credentials</button>
 </div>
 
 <div class="view-toggle">
@@ -894,184 +880,44 @@ a{color:inherit;text-decoration:none}
   <div class="content" id="content-3mo"></div>
 </div>
 
-<!-- ── Credentials modal ── -->
-<div class="overlay" id="cred-overlay" onclick="closeCreds(event)">
-  <div class="modal" onclick="event.stopPropagation()" style="max-width:440px">
+
+<!-- ── Jira preview modal ── -->
+<div class="overlay" id="jira-overlay" onclick="closeJira(event)">
+  <div class="jm-modal" onclick="event.stopPropagation()">
+
     <div class="mhd">
-      <h3>⚙️ Jira Credentials</h3>
-      <button class="mcl" onclick="closeCreds()">&times;</button>
-    </div>
-    <label>Atlassian email</label>
-    <input type="email" id="cred-email" placeholder="you@replyio.com">
-    <label>API token &nbsp;<a href="https://id.atlassian.com/manage-profile/security/api-tokens" target="_blank" style="font-size:10px;color:#6366F1;font-weight:400">Get token ↗</a></label>
-    <input type="password" id="cred-token" placeholder="Atlassian API token" autocomplete="current-password">
-    <p style="font-size:11px;color:#94A3B8;margin:-8px 0 14px">Stored in session only — never written to disk.</p>
-    <div class="mac"><button class="bopen" onclick="saveCreds()" style="margin-left:0;width:100%;justify-content:center">Save &amp; continue</button></div>
-  </div>
-</div>
-
-<!-- ── Jira ticket modal ── -->
-<div class="overlay" id="jira-overlay">
-  <div class="modal" onclick="event.stopPropagation()" style="width:600px;max-width:94vw">
-
-    <!-- Loading -->
-    <div id="js-loading" style="text-align:center;padding:32px 0">
-      <div class="spinner"></div>
-      <p id="js-loading-msg" style="margin-top:14px;color:#64748B;font-size:13px">Searching for duplicates…</p>
+      <h3>🔷 New Jira Ticket — REPLY</h3>
+      <button class="mcl" onclick="closeJira()">×</button>
     </div>
 
-    <!-- Preview -->
-    <div id="js-preview" style="display:none">
-      <div class="mhd">
-        <h3>🔷 New Jira Ticket — REPLY</h3>
-        <button class="mcl" onclick="closeJira()">&times;</button>
-      </div>
+    <label class="mlab">Summary</label>
+    <input class="jm-input" id="jm-summary" type="text">
 
-      <div id="js-dupes" style="display:none;background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;padding:12px 14px;margin-bottom:14px">
-        <div style="font-size:11px;font-weight:700;color:#92400E;margin-bottom:8px;text-transform:uppercase;letter-spacing:.4px">⚠️ Possible duplicates in REPLY</div>
-        <div id="js-dupe-list"></div>
-      </div>
+    <label class="mlab">Description <span>(editable)</span></label>
+    <textarea class="jm-textarea" id="jm-desc"></textarea>
 
-      <label>Summary</label>
-      <input type="text" id="js-summary">
-
-      <label>Description</label>
-      <textarea id="js-desc" style="height:150px;font-size:12px;font-family:ui-monospace,monospace;line-height:1.5"></textarea>
-
-      <div class="jform-row">
-        <div>
-          <label>Issue type</label>
-          <select id="js-issuetype">
-            <option>Feature request</option>
-            <option>Customer request</option>
-            <option>Story</option>
-            <option>Task</option>
-            <option>Bug</option>
-          </select>
-        </div>
-        <div>
-          <label>Priority</label>
-          <select id="js-priority">
-            <option>Medium</option>
-            <option>High</option>
-            <option>Low</option>
-            <option>Critical</option>
-          </select>
-        </div>
-        <div>
-          <label>Project</label>
-          <input type="text" id="js-project" value="REPLY" style="font-weight:700;letter-spacing:.5px">
-        </div>
-      </div>
-
-      <label>Labels <span style="font-weight:400;color:#94A3B8">(comma-separated)</span></label>
-      <input type="text" id="js-labels" value="customer-request, product-feedback">
-
-      <div class="mac" style="margin-top:6px">
-        <button class="bcopy" onclick="closeJira()">Cancel</button>
-        <button class="bopen" id="js-create-btn" onclick="createTicket()">Create Ticket →</button>
-      </div>
-    </div>
-
-    <!-- Success -->
-    <div id="js-success" style="display:none;text-align:center;padding:28px 0">
-      <div style="font-size:44px;line-height:1;margin-bottom:12px">✅</div>
-      <div style="font-size:13px;color:#94A3B8;margin-bottom:6px">Ticket created in REPLY</div>
-      <a id="js-ticket-key" href="#" target="_blank" style="font-size:26px;font-weight:800;color:#0052CC;letter-spacing:-1px;display:block"></a>
-      <p id="js-ticket-title" style="font-size:12px;color:#64748B;margin-top:6px;padding:0 24px"></p>
-      <div style="margin-top:22px"><button class="bopen" onclick="closeJira()" style="margin:0 auto">Done</button></div>
-    </div>
-
-    <!-- Error -->
-    <div id="js-error" style="display:none;padding:20px 0">
-      <div class="mhd">
-        <h3 style="color:#DC2626">⚠️ Error</h3>
-        <button class="mcl" onclick="closeJira()">&times;</button>
-      </div>
-      <p id="js-err-msg" style="font-size:13px;color:#475569;line-height:1.6;margin-bottom:16px"></p>
-      <div class="mac">
-        <button class="bcopy" onclick="closeJira()">Cancel</button>
-        <button class="bopen" onclick="retryPreview()">Retry →</button>
-      </div>
+    <div class="mfooter">
+      <button class="mbtn mbtn-cancel" onclick="closeJira()">Cancel</button>
+      <button class="mbtn mbtn-open" onclick="openInJira()">Open in Jira →</button>
     </div>
 
   </div>
 </div>
 
 <script>
-// ── State ────────────────────────────────────────────────────────────────
-let pendingBtn = null;
-
-// ── Thread toggle ─────────────────────────────────────────────────────────
+// ── Thread toggle ──────────────────────────────────────────────────────────
 function toggleThread(btn) {
   const tc = btn.nextElementSibling;
   const open = tc.classList.toggle('open');
   btn.textContent = (open ? '▼ ' : '▶ ') + btn.textContent.slice(2);
 }
 
-// ── Credentials ───────────────────────────────────────────────────────────
-function openCreds() {
-  document.getElementById('cred-email').value = sessionStorage.getItem('jiraEmail') || '';
-  document.getElementById('cred-token').value = sessionStorage.getItem('jiraToken') || '';
-  document.getElementById('cred-overlay').classList.add('open');
-}
-function closeCreds(e) {
-  if (!e || e.target === document.getElementById('cred-overlay'))
-    document.getElementById('cred-overlay').classList.remove('open');
-}
-function saveCreds() {
-  const email = document.getElementById('cred-email').value.trim();
-  const token = document.getElementById('cred-token').value.trim();
-  if (!email || !token) { alert('Both fields are required.'); return; }
-  sessionStorage.setItem('jiraEmail', email);
-  sessionStorage.setItem('jiraToken', token);
-  document.getElementById('cred-overlay').classList.remove('open');
-  if (pendingBtn) { const b = pendingBtn; pendingBtn = null; openJira(b); }
-}
-function getAuth() {
-  const e = sessionStorage.getItem('jiraEmail');
-  const t = sessionStorage.getItem('jiraToken');
-  return (e && t) ? 'Basic ' + btoa(e + ':' + t) : null;
-}
-
-// ── Jira REST API (v3, Basic auth) ────────────────────────────────────────
-const JIRA_BASE = 'https://replyio.atlassian.net/rest/api/3';
-
-async function jiraReq(path, method, body) {
-  const auth = getAuth();
-  if (!auth) throw new Error('NO_AUTH');
-  const opts = {
-    method: method || 'GET',
-    headers: { Authorization: auth, Accept: 'application/json', 'Content-Type': 'application/json' }
-  };
-  if (body) opts.body = JSON.stringify(body);
-  let res;
-  try { res = await fetch(JIRA_BASE + path, opts); }
-  catch (e) { throw new Error('CORS_NET:' + e.message); }
-  if (!res.ok) {
-    const j = await res.json().catch(() => ({}));
-    const msg = (j.errorMessages || []).concat(Object.values(j.errors || {})).join(' · ') || 'HTTP ' + res.status;
-    throw new Error(msg);
-  }
-  return res.json();
-}
-
-// ── Duplicate search ──────────────────────────────────────────────────────
-async function searchDupes(summary) {
-  const words = summary.replace(/[^a-zA-Z0-9 ]/g, ' ')
-    .split(/\s+/).filter(w => w.length > 4).slice(0, 5).join(' ');
-  if (!words) return [];
-  const jql = 'project = REPLY AND summary ~ "' + words + '" ORDER BY created DESC';
-  const data = await jiraReq('/search?maxResults=5&fields=summary,status&jql=' + encodeURIComponent(jql));
-  return data.issues || [];
-}
-
-// ── HTML escape helper ────────────────────────────────────────────────────
+// ── HTML escape helper ─────────────────────────────────────────────────────
 function esc(s) {
   return String(s||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
 
-// ── Card metadata (DOM for This Month cards; data-attrs for 3-month cards) ──
+// ── Card metadata ──────────────────────────────────────────────────────────
 function cardMeta(btn) {
   if (btn.dataset.src === '3mo') {
     return {
@@ -1099,185 +945,93 @@ function cardMeta(btn) {
   };
 }
 
-// ── Ticket content builders ───────────────────────────────────────────────
-function buildPlainText(meta, rawDesc) {
-  const lines = [
-    '## Problem Statement',
-    rawDesc,
+// ── Jira preview modal ────────────────────────────────────────────────────
+const JIRA_FUNC_MAP = {
+  'LinkedIn Automation':   'LinkedIn',
+  'API & Webhooks':        'API',
+  'AI Features':           'AI SDR',
+  'Sequences & Email':     'Sequences',
+  'CRM Integration':       'Integrations',
+  'Analytics & Reporting': 'Analytics',
+  'Inbox':                 'Inbox',
+  'Contact Management':    'Contacts',
+  'Scheduling':            'Sequences',
+  'Security & Auth':       'Settings',
+  'Billing & Plans':       'Billing',
+};
+
+let jiraOpenBtn = null;
+
+function buildPMDesc(rawDesc, meta) {
+  const evidence = [];
+  if (meta.customer) evidence.push(`- Customer: ${meta.customer}`);
+  if (meta.mrr && meta.mrr !== '—') evidence.push(`- MRR: ${meta.mrr}`);
+  if (meta.reporter) evidence.push(`- Reporter: ${meta.reporter}`);
+  if (meta.date) evidence.push(`- Requested: ${meta.date} via ${meta.channel}`);
+  if (meta.slackUrl) evidence.push(`- Slack: ${meta.slackUrl}`);
+  if (rawDesc) evidence.push(`- Quote: "${rawDesc.length > 280 ? rawDesc.slice(0, 280) + '…' : rawDesc}"`);
+
+  const why = [
+    meta.mrr && meta.mrr !== '—' ? `${meta.mrr} MRR` : null,
+    meta.customer || null
+  ].filter(Boolean).join(' · ');
+
+  return [
+    '## Problem',
+    rawDesc || '(describe what the customer cannot do today)',
     '',
-    '## MRR Impact',
-    meta.mrr + (meta.customer ? ' — ' + meta.customer : ''),
+    '## Why it matters',
+    why || '(MRR at stake, customers affected)',
     '',
-    '## Customer Context',
-    'Reporter:  ' + meta.reporter,
-    'Requested: ' + meta.date + ' via ' + meta.channel,
-  ];
-  if (meta.slackUrl) lines.push('', '## Slack Reference', meta.slackUrl);
-  return lines.join('\n');
+    '## Proposed solution',
+    '(What needs to be built — high level)',
+    '',
+    '## Customer evidence',
+    evidence.join('\n')
+  ].join('\n');
 }
 
-// Atlassian Document Format — parses ## headings from textarea content
-function toAdf(textContent) {
-  const nodes = [];
-  let buf = [];
-  const flush = () => {
-    const t = buf.join('\n').trim();
-    if (t) {
-      // Detect bare URL lines and make them links
-      if (/^https?:\/\/\S+$/.test(t)) {
-        nodes.push({ type:'paragraph', content:[
-          {type:'text', text:t, marks:[{type:'link', attrs:{href:t}}]}
-        ]});
-      } else {
-        nodes.push({ type:'paragraph', content:[{type:'text', text:t}] });
-      }
-    }
-    buf = [];
-  };
-  for (const line of textContent.split('\n')) {
-    if (line.startsWith('## ')) {
-      flush();
-      nodes.push({ type:'heading', attrs:{level:3}, content:[{type:'text', text:line.slice(3)}] });
-    } else {
-      buf.push(line);
-    }
-  }
-  flush();
-  return { type:'doc', version:1, content: nodes.length ? nodes : [{type:'paragraph',content:[{type:'text',text:''}]}] };
-}
-
-// ── Modal steps ───────────────────────────────────────────────────────────
-function showStep(name) {
-  ['loading','preview','success','error'].forEach(s =>
-    document.getElementById('js-' + s).style.display = s === name ? '' : 'none'
-  );
-}
-
-// ── Open modal ────────────────────────────────────────────────────────────
-async function openJira(btn) {
-  const auth = getAuth();
-  if (!auth) { pendingBtn = btn; openCreds(); return; }
-
-  pendingBtn = btn;
-  document.getElementById('jira-overlay').classList.add('open');
-  showStep('loading');
-  document.getElementById('js-loading-msg').textContent = 'Searching for duplicates in REPLY…';
-
-  const summary = btn.dataset.summary || '';
-  const rawDesc = btn.dataset.description || '';
+function openJira(btn) {
+  jiraOpenBtn = btn;
+  const card    = btn.closest('.card');
+  const summary = btn.dataset.summary || card?.querySelector('.ctitle')?.textContent?.trim() || '';
+  const rawDesc = btn.dataset.description || card?.querySelector('.cdesc')?.textContent?.trim() || '';
   const meta    = cardMeta(btn);
 
-  try {
-    const dupes = await searchDupes(summary);
-
-    // Populate fields
-    document.getElementById('js-summary').value    = summary;
-    document.getElementById('js-desc').value        = buildPlainText(meta, rawDesc);
-    document.getElementById('js-issuetype').value   = meta.issueType;
-
-    // Duplicates section
-    const dsec  = document.getElementById('js-dupes');
-    const dlist = document.getElementById('js-dupe-list');
-    if (dupes.length) {
-      dlist.innerHTML = dupes.map(i =>
-        '<div class="dupe-row">' +
-          '<a class="dupe-key" href="https://replyio.atlassian.net/browse/' + i.key + '" target="_blank">' + i.key + '</a>' +
-          '<span class="dupe-title">' + i.fields.summary + '</span>' +
-          '<span class="dupe-status">' + (i.fields.status?.name || '') + '</span>' +
-        '</div>'
-      ).join('');
-      dsec.style.display = '';
-    } else {
-      dsec.style.display = 'none';
-    }
-
-    showStep('preview');
-  } catch (err) {
-    handleError(err);
-  }
+  document.getElementById('jm-summary').value = summary;
+  document.getElementById('jm-desc').value    = buildPMDesc(rawDesc, meta);
+  document.getElementById('jira-overlay').classList.add('open');
 }
 
-function handleError(err) {
-  const el = document.getElementById('js-err-msg');
-  if (err.message === 'NO_AUTH') {
+function openInJira() {
+  const summary = document.getElementById('jm-summary').value.trim();
+  const desc    = document.getElementById('jm-desc').value.trim();
+  const card    = jiraOpenBtn?.closest('.card');
+  const cat     = jiraOpenBtn?.dataset.category
+               || card?.closest('.category')?.querySelector('.cat-name')?.textContent?.trim()
+               || '';
+  const func    = JIRA_FUNC_MAP[cat] || '';
+
+  const params = new URLSearchParams({
+    pid:         '10000',
+    issuetype:   '10901',
+    summary,
+    description: desc,
+  });
+
+  window.open(
+    'https://replyio.atlassian.net/secure/CreateIssueDetails!init.jspa?' + params.toString(),
+    '_blank'
+  );
+  closeJira();
+}
+
+function closeJira(e) {
+  if (!e || e.target === document.getElementById('jira-overlay'))
     document.getElementById('jira-overlay').classList.remove('open');
-    openCreds();
-    return;
-  }
-  if (err.message.startsWith('CORS_NET')) {
-    el.innerHTML =
-      'Network / CORS error.<br><br>' +
-      'The browser blocks API calls from <code>file://</code> URLs. ' +
-      'Serve the report from localhost instead:<br><br>' +
-      '<code style="display:block;background:#F1F5F9;padding:8px 12px;border-radius:6px;font-size:12px;margin:4px 0">cd ~/slack-reports &amp;&amp; python3 -m http.server 8080</code>' +
-      'Then open <a href="http://localhost:8080/reports/2026-05.html" target="_blank" style="color:#6366F1">localhost:8080/reports/2026-05.html</a>';
-  } else {
-    el.textContent = err.message;
-  }
-  showStep('error');
 }
 
-// ── Create ticket ─────────────────────────────────────────────────────────
-async function createTicket() {
-  const createBtn = document.getElementById('js-create-btn');
-  createBtn.textContent = 'Creating…';
-  createBtn.disabled = true;
-
-  const meta      = cardMeta(pendingBtn);
-  const summary   = document.getElementById('js-summary').value.trim();
-  const descTxt   = document.getElementById('js-desc').value.trim();
-  const issueType = document.getElementById('js-issuetype').value;
-  const priority  = document.getElementById('js-priority').value;
-  const labels    = document.getElementById('js-labels').value.split(',').map(l => l.trim()).filter(Boolean);
-
-  try {
-    const result = await jiraReq('/issue', 'POST', {
-      fields: {
-        project:     { key: 'REPLY' },
-        summary,
-        description: toAdf(descTxt),
-        issuetype:   { name: issueType },
-        priority:    { name: priority },
-        labels
-      }
-    });
-
-    const key = result.key;
-    const url = 'https://replyio.atlassian.net/browse/' + key;
-
-    // Success screen
-    document.getElementById('js-ticket-key').textContent = key;
-    document.getElementById('js-ticket-key').href = url;
-    document.getElementById('js-ticket-title').textContent = summary;
-    showStep('success');
-
-    // Update the card button
-    if (pendingBtn) {
-      pendingBtn.textContent = '✓ ' + key;
-      pendingBtn.style.cssText = 'background:#ECFDF5;border-color:#6EE7B7;color:#065F46;font-weight:700;cursor:pointer;border-radius:6px;padding:4px 11px;font-size:11px;margin-left:auto';
-      const k = key;
-      pendingBtn.onclick = () => window.open('https://replyio.atlassian.net/browse/' + k, '_blank');
-    }
-  } catch (err) {
-    handleError(err);
-  } finally {
-    createBtn.textContent = 'Create Ticket →';
-    createBtn.disabled = false;
-  }
-}
-
-// ── Close / retry ─────────────────────────────────────────────────────────
-function closeJira() {
-  document.getElementById('jira-overlay').classList.remove('open');
-}
-
-function retryPreview() {
-  if (pendingBtn) openJira(pendingBtn);
-}
-
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { closeJira(); closeCreds(); }
-});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeJira(); });
 
 // ── 3-Month View ──────────────────────────────────────────────────────────────
 
@@ -1507,6 +1261,7 @@ function render3Month() {
             data-date="${esc(dtTxt)}"
             data-channel="${esc(item.channel||'')}"
             data-slack-url="${esc(item.slack_link||'')}"
+            data-category="${esc(catName)}"
             onclick="openJira(this)">+ Jira
           </button>
         </div>
